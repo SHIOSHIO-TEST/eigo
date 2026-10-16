@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>英語ドリル</title>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FFF8EE">
+<link rel="icon" type="image/png" href="tango/icon-192.png">
+<!-- このページは「入口」です。ホーム画面に追加するのは、それぞれのドリル（tango/・bunpo/）です -->
+<style>
+  :root { --bg: #FFF8EE; --ink: #26303B; --muted: #6B7480; --line: #E9E1D4; }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); -webkit-text-size-adjust: 100%; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+  body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.6;
+         font-family: "BIZ UDPGothic", "BIZ UDPゴシック", "Hiragino Sans", "Meiryo", "Noto Sans JP", sans-serif; }
+  .wrap { max-width: 760px; margin: 0 auto;
+          padding: calc(32px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px))
+                   calc(40px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+  h1 { margin: 0 0 4px; text-align: center; font-size: clamp(1.6rem, 5vw, 2.2rem); }
+  .lead { margin: 0 0 24px; text-align: center; color: var(--muted); }
+  .cards { display: grid; gap: 16px; }
+  @media (min-width: 600px) { .cards { grid-template-columns: 1fr 1fr; } }
+  .card { display: flex; align-items: center; gap: 16px; min-height: 104px; padding: 18px;
+          border-radius: 18px; background: #fff; border: 2px solid transparent; color: inherit; text-decoration: none;
+          box-shadow: 0 1px 0 rgba(38, 48, 59, .05), 0 6px 18px rgba(38, 48, 59, .07);
+          transition: transform .08s, border-color .12s; }
+  .card:active { transform: translateY(2px); border-color: var(--accent); }
+  @media (hover: hover) and (pointer: fine) { .card:hover { border-color: var(--accent); } }
+  .card img { flex: none; width: 64px; height: 64px; border-radius: 16px; }
+  .card-text { min-width: 0; }
+  .card-text b { display: block; font-size: 1.15rem; }
+  .card-text span { display: block; color: var(--muted); font-size: .9rem; }
+  .go { margin-left: auto; padding: 6px 14px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 800; white-space: nowrap; }
+  .note { margin: 24px 0 0; padding: 12px 16px; border-radius: 12px; background: #fff; border: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>英語ドリル</h1>
+  <p class="lead">使うドリルを選んでください。</p>
+  <div class="cards">
+    <a class="card" href="tango/" style="--accent:#2F6FDE">
+      <img src="tango/icon-192.png" alt="">
+      <span class="card-text"><b>英単語ドリル</b><span>単語の4択・18グループ</span></span>
+      <span class="go">開く ▶</span>
+    </a>
+    <a class="card" href="bunpo/" style="--accent:#157A4B">
+      <img src="bunpo/icon-192.png" alt="">
+      <span class="card-text"><b>英語れんしゅうドリル</b><span>文法の4択・レベル1〜60</span></span>
+      <span class="go">開く ▶</span>
+    </a>
+  </div>
+  <p class="note">📲 それぞれのドリルを開いてから「ホーム画面に追加」すると、2つの別々のアプリとして使えます。追加の手順はドリルの画面に表示されます。</p>
+</div>
+<script>
+  (function () {
+    var ua = navigator.userAgent || '';
+    // LINE の中で開いたときは、ドリルを Safari / Chrome で開くようにする（LINE公式の仕組み）
+    if (/\bLine\//i.test(ua)) {
+      var links = document.querySelectorAll('a.card');
+      for (var i = 0; i < links.length; i++) {
+        links[i].href = links[i].href + (links[i].href.indexOf('?') < 0 ? '?' : '&') + 'openExternalBrowser=1';
+      }
+    }
+    // 以前この場所に置いていたドリルの Service Worker が残っていたら解除する（今は各フォルダで動かすため）
+    try {
+      if ('serviceWorker' in navigator) {
+        var dir = location.pathname.replace(/[^\/]*$/, '');
+        navigator.serviceWorker.getRegistrations().then(function (regs) {
+          regs.forEach(function (r) { try { if (new URL(r.scope).pathname === dir) r.unregister(); } catch (e) {} });
+        });
+      }
+    } catch (e) {}
+  })();
+</script>
+</body>
+</html>
