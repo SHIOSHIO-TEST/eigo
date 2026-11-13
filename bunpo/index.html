@@ -2857,6 +2857,14 @@ const GRAMMAR = {
   @media (prefers-reduced-motion: reduce) {
     .js .boot-help { animation: boot-reveal .01s linear 6s both !important; }  /* 動きではなく表示タイミングなので残す */
   }
+  /* ---------- 定期テスト対策への入口 ---------- */
+  .taisaku-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; min-height: 56px; background: #FCEFE5; border: 1.5px solid #E9B48F; border-radius: 14px; color: #1C2A35; text-decoration: none; }
+  .taisaku-link:hover { border-color: #C4561A; }
+  .taisaku-emoji { font-size: 1.5rem; flex: none; }
+  .taisaku-text { flex: 1; min-width: 0; line-height: 1.4; }
+  .taisaku-text b { display: block; color: #A84814; font-size: 1.05rem; }
+  .taisaku-text small { display: block; color: #5C6A75; font-size: .82rem; }
+  .taisaku-go { flex: none; color: #C4561A; font-weight: 700; }
 </style>
 </head>
 <body>
@@ -2900,6 +2908,13 @@ const GRAMMAR = {
       <button type="button" id="install-close" class="btn-text">とじる</button>
     </div>
   </section>
+
+  <!-- 定期テスト対策への入口（中身は同じフォルダの taisaku.html。テストを追加しても、このリンクはそのままでOK） -->
+  <a class="taisaku-link" href="taisaku.html">
+    <span class="taisaku-emoji" aria-hidden="true">📝</span>
+    <span class="taisaku-text"><b>定期テスト対策</b><small>教科書の本文・文法・単語をまとめて練習</small></span>
+    <span class="taisaku-go" aria-hidden="true">▶</span>
+  </a>
 
   <header class="status">
     <div class="level">
@@ -3844,7 +3859,7 @@ const GRAMMAR = {
 (function () {
   'use strict';
 
-  var APP_VERSION = '1.1（2026-10-16）';   // 更新したら書きかえると、生徒の画面で最新版か確認できます
+  var APP_VERSION = '1.2（2026-11-13）';   // 更新したら書きかえると、生徒の画面で最新版か確認できます
   var GUIDE_HIDDEN_KEY = 'eigo-drill-v1.installGuideHiddenAt';
   var GUIDE_HIDE_MS = 24 * 60 * 60 * 1000;              // 「とじる」を押したら1日は自動表示しない
 

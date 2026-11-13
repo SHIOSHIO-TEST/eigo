@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>テスト対策｜英語れんしゅうドリル</title>
+<meta name="theme-color" content="#F1F4F6">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="英語れんしゅう">
+<style>
+:root {
+  --pad: 16px;
+  --bg: #F1F4F6;
+  --surface: #FFFFFF;
+  --ink: #1C2A35;
+  --muted: #5C6A75;
+  --line: #D3DEE6;
+  --primary: #1E5AA8;
+  --primary-hover: #174B8E;
+  --primary-bg: #E6EEF8;
+  --accent: #C4561A;
+  --accent-bg: #FCEFE5;
+  --ok: #157A4B;
+  --ok-bg: #E3F2E9;
+  --ng: #C0333B;
+  --ng-bg: #FBE9EA;
+  --noun: #1E5AA8;
+  --mod: #D9730D;
+  --mod-bg: #FFF1E2;
+  --wh: #7B4BB7;
+  --wh-bg: #F1EAFA;
+  --subj: #1E5AA8;
+  --subj-bg: #E6EEF8;
+  --verb: #C0333B;
+  --verb-bg: #FBE9EA;
+  --hl-bg: #FFF0B3;
+  --focus: #E8A600;
+  --font: "BIZ UDPGothic", "BIZ UDPゴシック", "Meiryo", "メイリオ", "Yu Gothic UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
+  --en: "Segoe UI", "Helvetica Neue", Arial, var(--font);
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { font-size: 17px; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; min-height: 100vh; min-height: 100dvh;
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font); line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: var(--primary); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+[lang="en"], .en { font-family: var(--en); }
+
+.wrap { width: 100%; max-width: 820px; margin: 0 auto; padding: 18px var(--pad) 40px; }
+
+/* ---------- top bar ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(241, 244, 246, .94);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1.5px solid var(--line);
+}
+.topbar-in { max-width: 820px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 10px; min-height: 56px; }
+.back { flex: none; border: 1.5px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 14px; font-size: .95rem; }
+.back:hover { border-color: var(--primary); }
+.topbar-title { flex: 1; min-width: 0; margin: 0; font-size: 1rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topbar-title small { display: block; font-size: .78rem; color: var(--muted); font-weight: 400; }
+.topbar-count { flex: none; font-size: .95rem; color: var(--muted); }
+.topbar-count b { color: var(--ink); font-size: 1.1rem; }
+
+/* ---------- common ---------- */
+h1 { font-size: 1.55rem; margin: 6px 0 4px; line-height: 1.35; }
+h2 { font-size: 1.2rem; margin: 0 0 10px; }
+h3 { font-size: 1.05rem; margin: 0 0 8px; }
+.muted { color: var(--muted); }
+.small { font-size: .88rem; }
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 16px; }
+.stack > * + * { margin-top: 14px; }
+.section { margin-top: 26px; }
+.section-head { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 1.15rem; }
+.section-head .num { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; font-size: .9rem; flex: none; }
+.chip { display: inline-block; font-size: .78rem; padding: 1px 9px; border-radius: 999px; background: var(--primary-bg); color: var(--primary); font-weight: 700; vertical-align: middle; }
+.chip.accent { background: var(--accent-bg); color: var(--accent); }
+.chip.gray { background: #EBEFF2; color: var(--muted); }
+mark.hl { background: var(--hl-bg); color: inherit; padding: 0 2px; border-radius: 3px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  border: none; border-radius: 12px; padding: 12px 20px; font-weight: 700; font-size: 1rem;
+  background: var(--primary); color: #fff; text-decoration: none; min-height: 48px;
+}
+.btn:hover { background: var(--primary-hover); }
+.btn.sub { background: var(--surface); color: var(--primary); border: 1.5px solid var(--primary); }
+.btn.sub:hover { background: var(--primary-bg); }
+.btn.accent { background: var(--accent); }
+.btn.accent:hover { background: #A84814; }
+.btn.block { width: 100%; }
+.btn[disabled] { background: #E8ECEF; color: #9FA9B1; cursor: default; border-color: transparent; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.row > .btn { flex: 1 1 140px; }
+.speak { border: 1.5px solid var(--line); background: var(--surface); border-radius: 999px; width: 36px; height: 36px; font-size: 1rem; display: inline-grid; place-items: center; flex: none; padding: 0; }
+.speak:hover { border-color: var(--primary); }
+.no-speech .speak { display: none; }
+
+/* ---------- home ---------- */
+.hero { padding: 6px 0 4px; }
+.hero .range { font-size: .9rem; color: var(--muted); margin: 4px 0 0; }
+.total { margin-top: 14px; }
+.bar { height: 10px; border-radius: 5px; background: #DCE4EA; overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--ok); border-radius: 5px; transition: width .3s; }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 2px; font-size: .85rem; margin: 10px 0 0; }
+.flow span { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; }
+.flow em { font-style: normal; color: var(--muted); }
+.lessons { display: grid; gap: 12px; margin-top: 18px; }
+.lesson { display: flex; flex-direction: column; gap: 10px; }
+.lesson-top { display: flex; gap: 12px; align-items: flex-start; }
+.lesson-icon { flex: none; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 1.5rem; background: var(--primary-bg); }
+.lesson-name { margin: 0; font-size: 1.1rem; font-weight: 700; line-height: 1.35; }
+.lesson-sub { margin: 2px 0 0; font-size: .82rem; color: var(--muted); }
+.steps-mini { display: flex; gap: 4px; flex-wrap: wrap; }
+.steps-mini i { width: 22px; height: 8px; border-radius: 4px; background: #DCE4EA; }
+.steps-mini i.part { background: #9CCBB2; }
+.steps-mini i.done { background: var(--ok); }
+.lesson .row .btn { min-height: 44px; padding: 8px 14px; }
+.extra { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; margin-top: 16px; }
+.extra .card { display: flex; flex-direction: column; gap: 8px; }
+.extra p { margin: 0; }
+@media (max-width: 560px) { .extra { grid-template-columns: 1fr; } }
+
+/* ---------- tabs ---------- */
+.tabs { display: flex; gap: 6px; margin: 14px 0 0; background: #E2E8ED; padding: 4px; border-radius: 12px; }
+.tabs button { flex: 1; border: none; background: transparent; border-radius: 9px; padding: 9px 6px; font-weight: 700; color: var(--muted); }
+.tabs button[aria-selected="true"] { background: var(--surface); color: var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+
+/* ---------- explanation ---------- */
+.scene { display: flex; gap: 12px; align-items: flex-start; }
+.scene .emoji { font-size: 1.8rem; line-height: 1; flex: none; }
+.scene p { margin: 0; }
+.tq { margin-top: 10px; padding: 10px 12px; background: var(--primary-bg); border-radius: 10px; font-size: .95rem; }
+.tq b { color: var(--primary); }
+.summary { margin: 0; padding-left: 1.3em; }
+.summary li + li { margin-top: 6px; }
+.toggles { display: flex; gap: 8px; flex-wrap: wrap; }
+.toggle { border: 1.5px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 14px; font-size: .9rem; }
+.toggle[aria-pressed="true"] { border-color: var(--primary); background: var(--primary-bg); color: var(--primary); font-weight: 700; }
+
+.gcard h3 { color: var(--primary); }
+.gcard .point { margin: 0 0 10px; }
+.gcard ul { margin: 10px 0 0; padding-left: 1.2em; font-size: .93rem; }
+.gcard li + li { margin-top: 4px; }
+
+/* diagrams */
+.diag { background: #F7F9FB; border: 1px dashed #B9C8D4; border-radius: 12px; padding: 12px; overflow-x: auto; }
+.diag + .diag { margin-top: 10px; }
+.diag-label { font-size: .78rem; color: var(--muted); margin: 0 0 4px; font-weight: 700; }
+.md-line { font-size: 1.08rem; white-space: nowrap; padding-bottom: 4px; }
+.md { display: inline-flex; align-items: flex-start; position: relative; padding-bottom: 18px; vertical-align: top; }
+.md-n { position: relative; color: var(--noun); font-weight: 700; border-bottom: 2.5px solid var(--noun); }
+.md-n::after { content: ""; position: absolute; left: 50%; right: 0; top: calc(100% + 9px); height: 9px; border-left: 2px solid var(--mod); border-bottom: 2px solid var(--mod); }
+.md-n::before { content: ""; position: absolute; left: calc(50% - 5px); top: calc(100% + 2px); border: 5px solid transparent; border-top-width: 0; border-bottom: 8px solid var(--mod); }
+.md-m { position: relative; margin-left: .35em; background: var(--mod-bg); color: #8A4300; border-radius: 4px; padding: 0 4px; font-weight: 700; }
+.md-m::after { content: ""; position: absolute; left: calc(-.35em - 1px); right: 50%; top: 100%; height: 18px; border-right: 2px solid var(--mod); border-bottom: 2px solid var(--mod); }
+.md-ja { margin-top: 2px; font-size: .95rem; display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; }
+.md-ja .mj { background: var(--mod-bg); color: #8A4300; border-radius: 4px; padding: 0 6px; font-weight: 700; }
+.md-ja .nj { color: var(--noun); font-weight: 700; border-bottom: 2.5px solid var(--noun); }
+.md-ja .arr { color: var(--mod); font-weight: 700; }
+.md-note { font-size: .78rem; color: var(--muted); margin: 6px 0 0; }
+
+.tok-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.tok { display: inline-block; padding: 3px 8px; border-radius: 6px; font-weight: 700; background: #EEF1F4; font-family: var(--en); }
+.tok.w { background: var(--wh-bg); color: var(--wh); }
+.tok.s { background: var(--subj-bg); color: var(--subj); }
+.tok.v { background: var(--verb-bg); color: var(--verb); }
+.tok.o { background: transparent; padding: 3px 2px; font-weight: 400; }
+.iq-arrow { margin: 6px 0; color: var(--muted); font-size: .85rem; }
+.iq-ja { font-size: .88rem; color: var(--muted); margin: 3px 0 0; }
+.legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: .78rem; margin-top: 8px; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; }
+.legend .w::before { background: var(--wh); }
+.legend .s::before { background: var(--subj); }
+.legend .v::before { background: var(--verb); }
+
+.slots { display: flex; flex-wrap: wrap; gap: 8px; }
+.slot { border-radius: 10px; padding: 6px 10px; text-align: center; border: 2px solid; min-width: 70px; }
+.slot .se { display: block; font-weight: 700; font-family: var(--en); }
+.slot .sj { display: block; font-size: .8rem; }
+.slot.s { border-color: #A9C1E2; background: var(--subj-bg); color: var(--subj); }
+.slot.v { border-color: #EBB0B4; background: var(--verb-bg); color: var(--verb); }
+.slot.w { border-color: #CDB5EA; background: var(--wh-bg); color: var(--wh); }
+.slot.o { border-color: #F2C79C; background: var(--mod-bg); color: #8A4300; }
+
+.rel-row { font-family: var(--en); font-size: 1.04rem; }
+.rel-step { font-size: .78rem; color: var(--muted); margin: 8px 0 2px; font-weight: 700; font-family: var(--font); }
+.rel-noun { color: var(--noun); font-weight: 700; border-bottom: 2.5px solid var(--noun); }
+.rel-pron { color: var(--wh); font-weight: 700; background: var(--wh-bg); border-radius: 4px; padding: 0 4px; }
+.rel-mod { background: var(--mod-bg); border-radius: 4px; padding: 0 3px; color: #8A4300; }
+.rel-rp { color: var(--wh); font-weight: 800; }
+.same-rows { margin: 0; padding-left: 1.2em; font-family: var(--en); }
+
+/* figures */
+.fig { overflow-x: auto; }
+.fig-title { font-weight: 700; margin: 0 0 10px; }
+.survey .q { display: grid; grid-template-columns: 1fr; gap: 3px; margin-bottom: 12px; }
+.survey .qt { font-size: .9rem; }
+.survey .qt small { display: block; color: var(--muted); font-family: var(--en); font-size: .78rem; }
+.survey .qbar { display: flex; align-items: center; gap: 8px; }
+.survey .qbar .track { flex: 1; height: 22px; background: #E8EDF1; border-radius: 6px; overflow: hidden; }
+.survey .qbar .fill { height: 100%; background: #7FA3CF; border-radius: 6px; }
+.survey .qbar .fill.max { background: var(--ok); }
+.survey .qbar .fill.min { background: var(--ng); }
+.survey .qbar b { width: 3.2em; text-align: right; font-size: 1.05rem; }
+.survey .tag { font-size: .75rem; font-weight: 700; border-radius: 4px; padding: 0 5px; margin-left: 4px; }
+.survey .tag.max { background: var(--ok-bg); color: var(--ok); }
+.survey .tag.min { background: var(--ng-bg); color: var(--ng); }
+
+.flowchart { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+.fc-box { border: 2px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--surface); }
+.fc-box .fc-who { font-size: .78rem; font-weight: 700; color: var(--muted); }
+.fc-box.good { border-color: #9CCBB2; background: var(--ok-bg); }
+.fc-box.bad { border-color: #EBB0B4; background: var(--ng-bg); }
+.fc-box.idea { border-color: #F2C79C; background: var(--mod-bg); }
+.fc-box.key { border-color: #A9C1E2; background: var(--primary-bg); }
+.fc-arrow { text-align: center; color: var(--muted); font-size: 1.1rem; line-height: 1.4; }
+.fc-arrow small { font-size: .78rem; }
+.fc-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.fc-en { display: block; font-family: var(--en); font-size: .82rem; color: var(--muted); margin-top: 2px; }
+
+.timeline { position: relative; margin: 0; padding: 0 0 0 26px; list-style: none; }
+.timeline::before { content: ""; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 3px; background: #C9D6E0; border-radius: 2px; }
+.timeline li { position: relative; padding: 0 0 14px; }
+.timeline li::before { content: ""; position: absolute; left: -23px; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: var(--surface); border: 3px solid var(--primary); }
+.timeline li.dark::before { border-color: var(--ng); background: var(--ng); }
+.timeline li.warm::before { border-color: var(--ok); background: var(--ok); }
+.timeline .when { font-size: .8rem; font-weight: 700; color: var(--primary); }
+.timeline li.dark .when { color: var(--ng); }
+.timeline li.warm .when { color: var(--ok); }
+.timeline .what { display: block; }
+.timeline .en { display: block; font-size: .82rem; color: var(--muted); }
+.bridge { display: flex; align-items: center; justify-content: center; gap: 0; margin: 4px 0 14px; }
+.bridge .land { border: 2px solid var(--primary); border-radius: 10px; padding: 6px 12px; font-weight: 700; background: var(--primary-bg); color: var(--primary); }
+.bridge svg { width: 150px; height: 46px; flex: none; }
+
+.profile { display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; }
+.profile dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; font-size: .95rem; }
+.profile dt { font-weight: 700; color: var(--muted); white-space: nowrap; }
+.profile dd { margin: 0; }
+@media (max-width: 520px) { .profile { grid-template-columns: 1fr; } .profile svg { max-width: 220px; margin: 0 auto; display: block; } }
+
+.six { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
+.six > div { border: 1.5px solid var(--line); border-radius: 10px; padding: 8px 10px; background: var(--surface); font-size: .92rem; }
+.six b { color: var(--accent); }
+.six .ex { display: block; font-family: var(--en); font-size: .88rem; }
+.order { display: grid; grid-template-columns: auto 1fr; gap: 8px 12px; align-items: center; margin-bottom: 12px; }
+.order .lab { font-size: .8rem; font-weight: 700; color: var(--muted); }
+
+/* sentence cards */
+.sent { padding: 14px 14px 12px; }
+.sent-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.sent-no { font-size: .8rem; font-weight: 700; color: var(--muted); }
+.sent-sp { font-size: .8rem; font-weight: 700; background: #EEF1F4; border-radius: 6px; padding: 0 7px; }
+.sent-en { font-size: 1.18rem; line-height: 1.55; margin: 0; flex: 1; }
+.sent-top { display: flex; gap: 10px; align-items: flex-start; }
+.chunks { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chunk { border: 1.5px solid #C9D6E0; border-radius: 9px; padding: 4px 9px; background: #F7F9FB; }
+.chunk .ce { display: block; font-family: var(--en); font-weight: 700; font-size: .98rem; }
+.chunk .cj { display: block; font-size: .82rem; color: var(--muted); }
+.chunk + .chunk { position: relative; }
+.sent-ja { margin: 10px 0 0; font-size: 1rem; }
+.sent-nt { margin: 8px 0 0; font-size: .9rem; background: var(--hl-bg); border-radius: 8px; padding: 6px 10px; }
+.sent .diag { margin-top: 10px; }
+.para-label { font-weight: 700; color: var(--accent); margin: 18px 0 8px; font-size: .95rem; }
+.hide-chunks .chunks { display: none; }
+.hide-ja .jaw { filter: blur(6px); cursor: pointer; user-select: none; }
+.hide-ja .jaw.show { filter: none; }
+
+.passage-read p { margin: 0 0 10px; }
+.passage-read .pen { font-family: var(--en); font-size: 1.05rem; line-height: 1.8; }
+.passage-read .pja { font-size: .9rem; color: var(--muted); margin-top: 2px; }
+.line-sp { font-weight: 700; font-size: .85rem; color: var(--muted); margin-right: 6px; }
+
+.vocab { width: 100%; border-collapse: collapse; }
+.vocab td { padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.vocab td:first-child { font-family: var(--en); font-weight: 700; }
+.vocab td:last-child { width: 44px; text-align: right; }
+
+/* practice menu */
+.steplist { display: grid; gap: 10px; }
+.step { display: grid; grid-template-columns: 44px 1fr auto; gap: 12px; align-items: center; }
+.step-no { width: 44px; height: 44px; border-radius: 12px; background: var(--primary-bg); color: var(--primary); display: grid; place-items: center; font-weight: 800; font-size: 1.1rem; }
+.step.done .step-no { background: var(--ok); color: #fff; }
+.step-name { margin: 0; font-weight: 700; }
+.step-desc { margin: 0; font-size: .82rem; color: var(--muted); }
+.step .bar { margin-top: 6px; height: 7px; }
+.step .btn { min-height: 44px; padding: 8px 16px; }
+
+/* play */
+.play { padding-bottom: 20px; }
+.qcard { margin-top: 6px; }
+.qkind { font-size: .82rem; font-weight: 700; color: var(--accent); margin: 0 0 6px; }
+.qprompt { font-size: 1.3rem; line-height: 1.6; margin: 0; word-break: break-word; }
+.qprompt.ja-prompt { font-size: 1.2rem; }
+.qsub { margin: 8px 0 0; color: var(--muted); font-size: .98rem; }
+.qtop { display: flex; gap: 10px; align-items: flex-start; }
+.qtop .qprompt { flex: 1; }
+.blank { display: inline-block; min-width: 3.5em; border-bottom: 3px solid var(--primary); text-align: center; color: var(--primary); font-weight: 700; padding: 0 4px; line-height: 1.3; }
+.blank.ok { border-color: var(--ok); color: var(--ok); background: var(--ok-bg); border-radius: 4px 4px 0 0; }
+.blank.ng { border-color: var(--ng); color: var(--ng); background: var(--ng-bg); border-radius: 4px 4px 0 0; }
+.blank.cur { background: #FFF6CF; border-color: var(--focus); color: #8A6400; border-radius: 4px 4px 0 0; animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 50% { background: #FFE88A; } }
+@media (prefers-reduced-motion: reduce) { .blank.cur { animation: none; } }
+.target { background: var(--mod-bg); color: #8A4300; font-weight: 700; border-bottom: 3px solid var(--mod); padding: 0 3px; border-radius: 3px; }
+
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.choices.long { grid-template-columns: 1fr; }
+@media (max-width: 520px) { .choices { grid-template-columns: 1fr; } }
+.choice {
+  display: flex; align-items: center; gap: 10px; text-align: left;
+  min-height: 56px; padding: 10px 14px;
+  border: 2px solid var(--line); border-radius: 12px; background: var(--surface);
+  font-size: 1.12rem; line-height: 1.4;
+}
+.choice:hover:not([disabled]) { border-color: var(--primary); background: #F6F9FD; }
+.choice .k { flex: none; width: 26px; height: 26px; border-radius: 7px; background: #EEF1F4; color: var(--muted); display: grid; place-items: center; font-size: .8rem; font-weight: 700; }
+.choice .t { flex: 1; word-break: break-word; }
+.choice.is-ok { border-color: var(--ok); background: var(--ok-bg); color: var(--ok); font-weight: 700; }
+.choice.is-ng { border-color: var(--ng); background: var(--ng-bg); color: var(--ng); }
+.choice.is-ng .t { text-decoration: line-through; }
+.choice[disabled] { cursor: default; }
+.choice.dim { opacity: .55; }
+
+.feedback { margin-top: 14px; border-radius: 12px; padding: 12px 14px; }
+.feedback.ok { background: var(--ok-bg); }
+.feedback.ng { background: var(--ng-bg); }
+.fb-title { margin: 0; font-size: 1.25rem; font-weight: 800; }
+.feedback.ok .fb-title { color: var(--ok); }
+.feedback.ng .fb-title { color: var(--ng); }
+.fb-body { margin: 4px 0 0; }
+.fb-full { margin: 6px 0 0; font-family: var(--en); }
+.fb-ja { margin: 2px 0 0; font-size: .92rem; color: var(--muted); }
+.next-row { margin-top: 14px; display: flex; gap: 10px; }
+.next-row .btn { flex: 1; }
+
+.passage { font-size: 1.12rem; line-height: 2.1; }
+.passage .pline { margin: 0 0 6px; }
+.passage .pja { display: block; font-size: .85rem; color: var(--muted); line-height: 1.5; margin-bottom: 4px; }
+.passage .pnum { font-size: .75rem; font-weight: 700; color: var(--muted); margin-right: 2px; }
+.dock {
+  position: sticky; bottom: 0; z-index: 10;
+  margin: 14px calc(var(--pad) * -1) 0; padding: 12px var(--pad) calc(12px + env(safe-area-inset-bottom));
+  background: rgba(241, 244, 246, .97); border-top: 1.5px solid var(--line);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.dock .choices { margin-top: 8px; gap: 8px; }
+.dock .choice { min-height: 48px; font-size: 1.05rem; padding: 8px 12px; }
+.dock .feedback { margin-top: 8px; padding: 8px 12px; }
+.dock .fb-title { font-size: 1.05rem; }
+.dock .next-row { margin-top: 8px; }
+.dock-q { margin: 0; font-weight: 700; }
+@media (max-width: 520px) { .dock .choices { grid-template-columns: 1fr 1fr; } }
+
+.result { text-align: center; }
+.result .big { font-size: 3rem; font-weight: 800; margin: 6px 0 0; line-height: 1.1; }
+.result .stars { font-size: 2rem; letter-spacing: 4px; margin: 6px 0; }
+.result .msg { font-size: 1.1rem; margin: 8px 0 14px; }
+.weak { text-align: left; margin: 14px 0; }
+.weak li + li { margin-top: 4px; }
+
+/* sheet */
+.sheet { position: fixed; inset: 0; z-index: 50; background: rgba(20, 30, 40, .45); display: flex; align-items: flex-end; justify-content: center; }
+.sheet-card { background: var(--surface); width: 100%; max-width: 640px; max-height: 88vh; overflow: auto; border-radius: 18px 18px 0 0; padding: 18px 18px calc(18px + env(safe-area-inset-bottom)); }
+@media (min-width: 700px) { .sheet { align-items: center; } .sheet-card { border-radius: 18px; } }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+.sheet-head h2 { margin: 0; }
+.sheet ol { padding-left: 1.3em; }
+.sheet li + li { margin-top: 4px; }
+
+.banner { background: #FFF6CF; border: 1.5px solid #F0D27A; border-radius: 12px; padding: 10px 12px; margin-bottom: 12px; font-size: .95rem; }
+.banner .btn { margin-top: 8px; min-height: 40px; padding: 6px 14px; }
+
+.foot { max-width: 820px; margin: 0 auto; padding: 10px 16px 30px; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; font-size: .85rem; color: var(--muted); }
+.foot .links { display: flex; gap: 12px; flex-wrap: wrap; }
+.linkbtn { border: none; background: none; color: var(--primary); text-decoration: underline; padding: 4px 0; font-size: .85rem; }
+.linkbtn.danger { color: var(--ng); }
+
+@media (min-width: 700px) {
+  html { font-size: 18px; }
+  :root { --pad: 24px; }
+  .wrap { padding-top: 24px; padding-bottom: 48px; }
+  .lessons { grid-template-columns: 1fr 1fr; }
+}
+.btn.off { opacity: .5; cursor: default; }
+
+.switcher { margin-bottom: 14px; display: flex; flex-direction: column; gap: 8px; }
+.switcher .btn { min-height: 44px; padding: 8px 14px; }
+
+</style>
+</head>
+<body>
+<header class="topbar" id="topbar"></header>
+<main id="app"></main>
+<footer class="foot">
+  <div class="links">
+    <a href="./">文法ドリルにもどる</a>
+    <button type="button" class="linkbtn" id="installBtn">ホーム画面に追加する方法</button>
+    <button type="button" class="linkbtn danger" id="resetBtn">学習記録を消す</button>
+  </div>
+  <span id="ver"></span>
+</footer>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <div class="sheet-card">
+    <div class="sheet-head"><h2 id="sheetTitle">ホーム画面に追加する方法</h2><button type="button" class="back" id="sheetClose">閉じる</button></div>
+    <div id="sheetBody"></div>
+  </div>
+</div>
+<script>
+/* =====================================================================
+   ■ テスト対策データ（運用者の方へ）
+   ・TESTS は「テストごとのデータ」を並べたリストです。次のテストを追加するときは、
+     いちばん下の「▼ 次のテストはここに追加」の位置に { id, title, range, lessons } をもう1つ足します。
+     （id はほかと重ならない名前に。学習記録は id ごとに別々に保存されます）
+   ・2つ以上あると、ホーム画面に「テストを切りかえる」ボタンが自動で出ます。最初に開くのは一番下（最新）のテストです。
+   ・単元（lessons）ごとに icon: "📘" で絵文字、fig: で図（下のプログラム内 FIG に登録した名前）を指定できます。
+     fig を書かなければ図なしで表示されます。figHtml: "<p>…</p>" と書けば、自分で用意したHTMLをそのまま図として表示します。
+   ・文（sentences）の書き方
+       sp : 話している人（会話文のとき）
+       en : 英文。「 / 」で区切ると「意味のかたまり」になります。[[ ]] で囲むと色がつきます。
+       cj : かたまりごとの日本語（en の区切りと同じ数）
+       ja : 文全体の日本語訳
+       nt : ポイントの説明（[[ ]] で強調）
+       q  : 空欄問題。["正解", "ちがう選択肢", "ちがう選択肢", "ちがう選択肢", "（あれば）解説"]
+            正解の語は英文の中にそのままの形で入っている必要があります。
+       md : 「後ろから説明」の図 [前の部分, 名詞, 説明のかたまり, 後ろの部分, 名詞の日本語, 説明の日本語]
+       ks : 教科書の Key Sentence や Practice の文のとき、その名前
+   ===================================================================== */
+const TESTS = [
+{
+  id: "2026-term2-u4u5",
+  title: "定期テスト対策",
+  range: "Unit 4（Part 1・2、Read and Think 1）／ Unit 5（Part 1・2、Key Sentences 17・18）／ 名詞を後ろから説明する文",
+  lessons: [
+
+  /* ------------------------------------------------------------------ */
+  {
+    id: "u4p1", unit: "Unit 4", part: "Part 1", page: "p.52",
+    title: "防災アンケート",
+    scene: "エディが、緑市に住む外国出身の人たちへの「防災アンケート」の結果を見ています。",
+    question: ["What percentage of foreign people in Midori City know where the local shelter is?", "緑市の外国の人のうち、地域の避難所の場所を知っている人は何パーセント？"],
+    summary: [
+      "アンケートは「災害への準備はできていますか？　何を知っていますか？」という内容。",
+      "4つの質問はすべて「I know ～（私は～を知っている）」の形。",
+      "結果：いちばん多いのは「火事のときの電話番号」53％、いちばん少ないのは「たくわえる食料と水の量」22％。"
+    ],
+    fig: "survey",
+    grammar: [
+      {
+        t: "「どこに～か」「何を～か」を文の中に入れる（間接疑問文）",
+        p: "疑問詞（where / what / how など）のかたまりを I know のあとに入れると、「～か知っている」になります。そのとき、うしろは [[主語 → 動詞]] のふつうの順番になります。",
+        d: [
+          { type: "iq", from: [["Where", "w"], ["is", "v"], ["the local shelter", "s"], ["?", "o"]], to: [["I know", "o"], ["where", "w"], ["the local shelter", "s"], ["is", "v"], [".", "o"]], fj: "地域の避難所はどこですか。", tj: "私は地域の避難所がどこにあるか知っています。" },
+          { type: "iq", from: [["What", "w"], ["should", "v"], ["I", "s"], ["do", "v"], ["?", "o"]], to: [["I want to know", "o"], ["what", "w"], ["I", "s"], ["should do", "v"], [".", "o"]], fj: "私は何をすべきですか。", tj: "私は何をすべきか知りたいです。" }
+        ],
+        tips: ["× I know where [[is]] the shelter. → ○ I know where the shelter [[is]].", "how to ～ は「～のしかた」。how to use = 使い方。", "how much ～ は「どれくらい（の量）の～」。"]
+      }
+    ],
+    sentences: [
+      { en: "Are you [[prepared]] / for a disaster?", cj: ["あなたは準備ができていますか", "災害に対して"], ja: "あなたは災害への準備ができていますか。", nt: "be prepared for ～ ＝「～の準備ができている」。", q: [["prepared", "prepare", "preparing", "prepares", "be動詞（Are）のあとなので prepared（準備ができた）。"], ["disaster", "shelter", "kit", "store"]] },
+      { en: "What / do you know?", cj: ["何を", "あなたは知っていますか"], ja: "あなたは何を知っていますか。", nt: "What ＝「何」。", q: [["What", "Who", "When", "Where", "「何を」は What。"]] },
+      { en: "Please circle / the number(s).", cj: ["〇をつけてください", "番号に"], ja: "（あてはまる）番号に〇をつけてください。", nt: "circle は「〇でかこむ」。Please のあとは動詞のもとの形。", q: [["circle", "circles", "circled", "circling", "Please のあとは動詞のもとの形。"]] },
+      { en: "I know / [[where the local shelter is]].", cj: ["私は知っています", "地域の避難所がどこにあるか"], ja: "私は地域の避難所がどこにあるか知っています。", nt: "where ＋ 主語 ＋ 動詞 で「どこに～か」。is が最後にくる！", q: [["where", "what", "who", "when", "「どこに」は where。"], ["is", "are", "do", "be", "where のうしろは「主語 the local shelter → 動詞 is」の順。"]] },
+      { en: "I know / [[how much food and water]] / I should store.", cj: ["私は知っています", "どれくらいの量の食料と水を", "私がたくわえるべきか"], ja: "私はどれくらいの食料と水をたくわえるべきか知っています。", nt: "how much ～ ＝「どれくらいの（量の）～」。store ＝「たくわえる」。", q: [["how much", "how many", "how old", "what time", "food や water は数えられないので how much。"], ["store", "stores", "stored", "storing", "should のあとは動詞のもとの形。"]] },
+      { en: "I know / [[what number]] / I should call / [[in case of]] a fire.", cj: ["私は知っています", "何番に", "電話すべきか", "火事の場合に"], ja: "私は火事のときに何番に電話すべきか知っています。", nt: "in case of ～ ＝「～の場合に」。", q: [["case", "kit", "store", "shelter", "in case of ～ で「～の場合に」。"], ["call", "calls", "called", "calling", "should のあとは動詞のもとの形。"]] },
+      { en: "I know / [[how to use]] / a fire extinguisher.", cj: ["私は知っています", "使い方を", "消火器の"], ja: "私は消火器の使い方を知っています。", nt: "how to ～ ＝「～のしかた」。fire extinguisher ＝「消火器」。", q: [["how", "what", "where", "who", "how to use で「使い方」。"], ["extinguisher", "shelter", "disaster", "kit"]] },
+      { en: "One thousand people / in Midori City / from other countries / answered.", cj: ["1000人が", "緑市の", "ほかの国出身の", "答えた"], ja: "緑市に住む外国出身の1000人が答えました。", nt: "主語が長い文。people を in Midori City と from other countries が後ろから説明しています。", md: ["", "One thousand people", "in Midori City from other countries", " answered.", "1000人", "緑市の・外国出身の"], q: [["answered", "answering", "to answer", "answers", "すでに答えたので過去形 answered。"]] },
+      { ks: "Key Sentence 11", en: "Where is / the local shelter?", cj: ["どこにありますか", "地域の避難所は"], ja: "地域の避難所はどこにありますか。", nt: "ふつうの疑問文。is が主語の前にある。", q: [["Where", "What", "Who", "How", "「どこに」は Where。"]] },
+      { ks: "Practice", en: "I want to know / [[what I should do]] / in a disaster.", cj: ["私は知りたい", "何をすべきか", "災害のときに"], ja: "私は災害のときに何をすべきか知りたいです。", nt: "what ＋ 主語 ＋ 動詞。should I do（疑問文の順）にしない。", q: [["what", "where", "who", "when", "「何を」は what。"], ["do", "does", "did", "doing", "should のあとは動詞のもとの形。"]] },
+      { ks: "Practice", en: "I want to know / [[when the next drill is]].", cj: ["私は知りたい", "次の訓練がいつなのか"], ja: "私は次の（防災）訓練がいつなのか知りたいです。", nt: "drill ＝「訓練」。is が最後にくる。", q: [["when", "what", "who", "which", "「いつ」は when。"], ["is", "are", "am", "be", "主語 the next drill（1つ）なので is。最後に置く。"]] },
+      { ks: "Practice", en: "I want to know / [[how we can get out]] / in a fire.", cj: ["私は知りたい", "どうやって外に出られるか", "火事のときに"], ja: "私は火事のときにどうやって外に出られるか知りたいです。", nt: "get out ＝「外に出る」。how ＋ 主語 we ＋ can get。", q: [["we can", "can we", "we are", "are we", "疑問詞のうしろは「主語 → 動詞」の順なので we can。"], ["how", "what", "who", "which", "「どうやって」は how。"]] }
+    ],
+    vocab: [["prepared", "準備ができた"], ["disaster", "災害"], ["shelter", "避難所"], ["store", "たくわえる"], ["case", "場合"], ["fire extinguisher", "消火器"], ["in case of ～", "～の場合に"], ["local", "地域の"], ["circle", "〇でかこむ"], ["drill", "訓練"], ["get out", "外に出る"], ["how to ～", "～のしかた"]],
+    content: [
+      { q: "緑市の外国出身の人で「地域の避難所の場所を知っている」人は何％？", c: ["27％", "22％", "53％", "44％"], ex: "グラフの1番（I know where the local shelter is.）は27％。" },
+      { q: "いちばん多くの人が「知っている」と答えたのはどれ？", c: ["火事のときに何番に電話するか", "避難所の場所", "たくわえる食料と水の量", "消火器の使い方"], ex: "3番が53％でいちばん多い。" },
+      { q: "いちばん少なかったのはどれ？", c: ["たくわえる食料と水の量", "避難所の場所", "火事のときの電話番号", "消火器の使い方"], ex: "2番が22％でいちばん少ない。" },
+      { q: "「消火器の使い方を知っている」人は何％？", c: ["44％", "27％", "53％", "22％"], ex: "4番は44％。" },
+      { q: "このアンケートに答えたのはだれ？", c: ["緑市に住む外国出身の1000人", "緑市の中学生1000人", "日本人100人", "エディのクラスメート"], ex: "One thousand people in Midori City from other countries answered." }
+    ]
+  },
+
+  /* ------------------------------------------------------------------ */
+  {
+    id: "u4p2", unit: "Unit 4", part: "Part 2", page: "p.53",
+    title: "非常用持ち出し袋",
+    scene: "防災が気になったエディが、理子に「家族は何をしてるの？」とたずねています。",
+    question: ["Does Eddy know what he should put in an emergency kit?", "エディは非常用持ち出し袋に何を入れればいいか知っている？"],
+    summary: [
+      "理子の家族は、もう非常用持ち出し袋（emergency kit）を作ってある。",
+      "エディの家族はまだ作っていない。日本語の防災情報がわかりにくいから。",
+      "理子は英語で書かれたリンクを送ってあげる。そして地震の映画をいっしょに見ようとさそう。"
+    ],
+    fig: "kit",
+    grammar: [
+      {
+        t: "tell ＋ 人 ＋ what ～（～が何か…に教える）",
+        p: "tell me（私に教えて）のあとに「what ＋ 主語 ＋ 動詞」を入れると「何を～か教えて」になります。",
+        d: [
+          { type: "slot", parts: [["Tell", "教えて", "v"], ["me", "私に", "s"], ["what you have done", "あなたが何をしてきたか", "w"]] },
+          { type: "iq", from: [["What", "w"], ["have", "v"], ["you", "s"], ["done", "v"], ["?", "o"]], to: [["Tell me", "o"], ["what", "w"], ["you", "s"], ["have done", "v"], [".", "o"]], fj: "あなたは何をしてきましたか。", tj: "あなたが何をしてきたか教えて。" }
+        ],
+        tips: ["show ＋ 人 ＋ what ～、teach ＋ 人 ＋ what ～ も同じ形。", "It shows you what you should prepare.（何を準備すべきかあなたに示す）"]
+      },
+      {
+        t: "現在完了（have ＋ 過去分詞）：もう～した／まだ～していない",
+        p: "We've made ～ ＝ We have made ～「もう作ってある」。hasn't made ～ yet ＝「まだ作っていない」。",
+        d: [
+          { type: "slot", parts: [["We've", "私たちは（We have）", "s"], ["made", "作った（過去分詞）", "v"], ["an emergency kit", "非常用持ち出し袋を", "o"]] },
+          { type: "slot", parts: [["My family", "私の家族は", "s"], ["hasn't made", "作っていない", "v"], ["one", "それ（kit）を", "o"], ["yet", "まだ", "w"]] }
+        ],
+        tips: ["do の過去分詞は [[done]]、make の過去分詞は [[made]]。", "yet は否定文で「まだ」。", "one ＝ an emergency kit（同じ言葉のくり返しをさける）"]
+      },
+      {
+        t: "It is ～ for 人 to …（人にとって…するのは～だ）",
+        p: "It's hard for us to understand ～ ＝「私たちにとって～を理解するのは難しい」。It は to 以下を指します。",
+        d: [{ type: "slot", parts: [["It's hard", "難しい", "v"], ["for us", "私たちにとって", "s"], ["to understand the Japanese information", "日本語の情報を理解するのは", "w"]] }],
+        tips: ["Why don't we ～? ＝「（いっしょに）～しない？」とさそう言い方。", "By the way ＝「ところで」（話を変えるとき）。"]
+      }
+    ],
+    sentences: [
+      { sp: "Eddy", en: "Riko, / tell me / [[what your family has done]] / to prepare for a disaster.", cj: ["理子", "私に教えて", "あなたの家族が何をしてきたか", "災害に備えるために"], ja: "理子、災害に備えるために君の家族が何をしてきたか教えて。", nt: "tell ＋ 人 ＋ what ～。has done は現在完了（done は do の過去分詞）。", q: [["done", "do", "did", "doing", "has のあとは過去分詞。do の過去分詞は done。"], ["tell", "say", "speak", "talk", "「人に教える」は tell ＋ 人。"]] },
+      { sp: "Riko", en: "[[We've made]] / an emergency kit.", cj: ["私たちは作ってある", "非常用持ち出し袋を"], ja: "うちは非常用持ち出し袋を作ってあるよ。", nt: "We've ＝ We have。現在完了「もう作ってある」。", q: [["made", "make", "making", "makes", "We've（We have）のあとは過去分詞 made。"], ["emergency", "energetic", "national", "local"]] },
+      { sp: "Eddy", en: "That's great.", cj: ["それはすごいね"], ja: "それはすごいね。", nt: "That's ＝ That is。", q: [["great", "sad", "tough", "sudden", "「すごいね」は great。"]] },
+      { sp: "Eddy", en: "Actually, / my family [[hasn't made]] one / yet.", cj: ["実は", "ぼくの家族はそれを作っていない", "まだ"], ja: "実は、ぼくの家族はまだ作ってないんだ。", nt: "hasn't ＝ has not。one ＝ an emergency kit。yet は否定文で「まだ」。", q: [["yet", "already", "ever", "just", "否定文の「まだ」は yet。"], ["hasn't", "haven't", "isn't", "doesn't", "主語 my family（3人称単数）＋ 現在完了の否定なので hasn't。"]] },
+      { sp: "Eddy", en: "[[It's hard for us]] / to understand / the Japanese information / about disasters.", cj: ["ぼくたちには難しい", "理解するのが", "日本語の情報を", "災害についての"], ja: "ぼくたちには、災害についての日本語の情報を理解するのが難しいんだ。", nt: "It is ～ for 人 to …「人にとって…するのは～だ」。", q: [["for", "of", "to", "with", "It's hard for 人 to ～ の形。"], ["understand", "understands", "understood", "understanding", "to のあとは動詞のもとの形。"]] },
+      { sp: "Riko", en: "I can send you / a link.", cj: ["あなたに送れるよ", "リンクを"], ja: "リンクを送ってあげられるよ。", nt: "send ＋ 人 ＋ もの「人にものを送る」。", q: [["send", "sends", "sent", "sending", "can のあとは動詞のもとの形。"], ["link", "kit", "movie", "drill"]] },
+      { sp: "Riko", en: "It shows you / [[what you should prepare]] / in English.", cj: ["それはあなたに示す", "何を準備すべきかを", "英語で"], ja: "それを見れば、何を準備すべきかが英語でわかるよ。", nt: "show ＋ 人 ＋ what ～「何を～か人に示す」。It ＝ a link。", q: [["shows", "show", "showing", "to show", "主語 It（3人称単数）なので shows。"], ["prepare", "prepares", "prepared", "preparing", "should のあとは動詞のもとの形。"]] },
+      { sp: "Eddy", en: "Oh, thanks!", cj: ["わあ、ありがとう"], ja: "わあ、ありがとう！", nt: "", q: [["thanks", "sorry", "please", "hello"]] },
+      { sp: "Riko", en: "You're welcome.", cj: ["どういたしまして"], ja: "どういたしまして。", nt: "お礼への返事。", q: [["welcome", "sorry", "fine", "thanks", "「どういたしまして」は You're welcome."]] },
+      { sp: "Riko", en: "[[By the way]], / my dad recommended / a movie / about an earthquake.", cj: ["ところで", "父がすすめた", "映画を", "地震についての"], ja: "ところで、お父さんが地震についての映画をすすめてくれたの。", nt: "By the way ＝「ところで」。recommend ＝「すすめる」。", q: [["By", "In", "On", "At", "By the way で「ところで」。"], ["recommended", "recommending", "to recommend", "recommend", "過去のことなので recommended。"]] },
+      { sp: "Riko", en: "[[Why don't we]] / watch it together?", cj: ["～しない？", "いっしょにそれを見る"], ja: "いっしょに見ない？", nt: "Why don't we ～? ＝「（いっしょに）～しませんか」とさそう言い方。", q: [["Why", "What", "How", "Where", "Why don't we ～? で「～しない？」。"], ["together", "yet", "already", "ago", "「いっしょに」は together。"]] },
+      { sp: "Eddy", en: "Sure.", cj: ["もちろん"], ja: "もちろん。", nt: "", q: [] },
+      { ks: "Key Sentence 12", en: "What / have you done?", cj: ["何を", "あなたはしてきましたか"], ja: "あなたは何をしてきましたか。", nt: "ふつうの疑問文（have が主語の前）。", q: [["done", "do", "did", "doing", "have のあとは過去分詞 done。"]] },
+      { ks: "Key Sentence 12", en: "Tell me / [[what you have done]].", cj: ["私に教えて", "あなたが何をしてきたか"], ja: "あなたが何をしてきたか私に教えて。", nt: "文の中に入ると「what ＋ 主語 ＋ 動詞」の順。", q: [["what you have", "what have you", "you have what", "have what you", "文の中では「what → 主語 you → have done」の順。"]] },
+      { ks: "Practice", en: "Please tell me / [[what we should do]] / in a fire.", cj: ["教えてください", "私たちが何をすべきか", "火事のときに"], ja: "火事のときに私たちが何をすべきか教えてください。", nt: "", q: [["we should", "should we", "we are", "are we", "what のうしろは「主語 → 動詞」の順。"]] },
+      { ks: "Practice", en: "Please tell me / [[where the fire extinguisher is]].", cj: ["教えてください", "消火器がどこにあるか"], ja: "消火器がどこにあるか教えてください。", nt: "is が最後にくる。", q: [["where", "what", "who", "when", "「どこに」は where。"]] },
+      { ks: "Practice", en: "Please teach me / [[what I have to do]].", cj: ["教えてください", "私が何をしなければならないか"], ja: "私が何をしなければならないか教えてください。", nt: "have to ～ ＝「～しなければならない」。", q: [["teach", "teaches", "taught", "teaching", "Please のあとは動詞のもとの形。"], ["have to", "has to", "having to", "to have", "主語 I なので have to。"]] }
+    ],
+    vocab: [["done", "do の過去分詞"], ["prepare", "準備する・備える"], ["emergency", "緊急（の）"], ["kit", "道具一式"], ["emergency kit", "非常用持ち出し袋"], ["recommend", "すすめる"], ["earthquake", "地震"], ["we've", "we have の短縮形"], ["hasn't", "has not の短縮形"], ["actually", "実は"], ["information", "情報"], ["by the way", "ところで"], ["Why don't we ～?", "～しませんか"], ["yet", "（否定文で）まだ"], ["together", "いっしょに"]],
+    content: [
+      { q: "Does Eddy know what he should put in an emergency kit?", c: ["No, he doesn't.", "Yes, he does.", "Yes, he is.", "No, he isn't."], ex: "エディの家族はまだ作っていないし、日本語の情報がわかりにくいと言っています。" },
+      { q: "理子の家族は災害に備えて何をした？", c: ["非常用持ち出し袋を作った", "避難所へ行った", "消火器を買った", "引っこした"], ex: "We've made an emergency kit." },
+      { q: "エディの家族が困っていることは？", c: ["災害についての日本語の情報を理解するのが難しい", "家が古い", "近くに店がない", "時間がない"], ex: "It's hard for us to understand the Japanese information about disasters." },
+      { q: "理子がエディに送ると言ったものは？", c: ["何を準備すべきか英語でわかるリンク", "地震の映画", "非常用持ち出し袋", "日本語の本"], ex: "I can send you a link. It shows you what you should prepare in English." },
+      { q: "理子のお父さんがすすめたものは？", c: ["地震についての映画", "防災の本", "防災訓練", "英語の授業"], ex: "my dad recommended a movie about an earthquake." },
+      { q: "理子はエディを何にさそった？", c: ["いっしょに映画を見ること", "いっしょにキットを作ること", "避難所に行くこと", "英語を勉強すること"], ex: "Why don't we watch it together?" }
+    ]
+  },
+
+  /* ------------------------------------------------------------------ */
+  {
+    id: "u4rt1", unit: "Unit 4", part: "Read and Think 1（前半）", page: "p.54 段落1〜3",
+    title: "テイラーさんの物語①",
+    paras: [4, 6, 3], paraStart: 1,
+    scene: "エディと理子が、週末に見た映画について書いたレポートの前半。映画の主人公はテイラー・アンダーソンさん。",
+    question: ["Who was Taylor Anderson?", "テイラー・アンダーソンさんはどんな人？"],
+    summary: [
+      "【段落1】東日本大震災（2011年3月11日）で約2万人が亡くなった。外国人も。テイラーさんの映画がある。",
+      "【段落2】テイラーさんはアメリカで日本語を学び、日本が好きに。2008年に石巻でALTとして働いた。明るい先生だった。",
+      "【段落3】地震がおきたとき、テイラーさんは生徒を落ち着かせ、近くの安全な場所へ連れて行った。"
+    ],
+    fig: "taylor1",
+    grammar: [
+      {
+        t: "名詞を後ろから説明する：-ing（～している）と過去分詞（～された）",
+        p: "2語以上のかたまりで名詞を説明するときは、名詞の[[うしろ]]に置きます。-ing は「～している」、過去分詞は「～された・～される」。",
+        d: [
+          { type: "md", before: "", n: "The woman", m: "smiling in a kimono", after: " is Taylor.", nj: "女性", mj: "着物を着てほほえんでいる" },
+          { type: "md", before: "There is ", n: "a movie", m: "called Live Your Dream", after: ".", nj: "映画", mj: "『Live Your Dream』と呼ばれる" }
+        ],
+        tips: ["smiling（ほほえんでいる）← 女性が自分でしている → -ing", "called（呼ばれる）← 映画は「呼ばれる」側 → 過去分詞"]
+      },
+      {
+        t: "そのほかの大事な表現",
+        p: "[[lose one's life]]「命を失う」（lost は lose の過去形）、[[were killed]]「（災害などで）亡くなった」、[[become attracted to ～]]「～にひきつけられる」、[[thanks to ～]]「～のおかげで」、[[all the time]]「いつも」。",
+        d: [{ type: "slot", parts: [["She came to Ishinomaki", "彼女は石巻に来た", "s"], ["to work", "働くために", "w"], ["as an ALT", "ALTとして", "o"]] }],
+        tips: ["to work ＝「働くために」（目的を表す不定詞）。", "as ～ ＝「～として」。", "hit の過去形は hit（形が変わらない）。"]
+      }
+    ],
+    sentences: [
+      { en: "About 20,000 people / [[lost their lives]] / in the Great East Japan Earthquake / on March 11, 2011.", cj: ["約2万人の人々が", "命を失った", "東日本大震災で", "2011年3月11日に"], ja: "2011年3月11日の東日本大震災で、約2万人の人々が命を失いました。", nt: "lose one's life ＝「命を失う」。lost は lose の過去形。life の複数形は lives。", q: [["lost", "losing", "to lose", "loses", "過去のことなので lose の過去形 lost。"], ["lives", "life", "live", "living", "people（複数）の命なので life の複数形 lives。"]] },
+      { en: "Several foreigners / [[were also killed]] / in the disaster.", cj: ["数人の外国人も", "亡くなった", "その災害で"], ja: "その災害で、何人かの外国人も亡くなりました。", nt: "be killed ＝「（事故・災害で）亡くなる」。several ＝「いくつかの・数人の」。", q: [["were", "was", "did", "is", "主語 Several foreigners（複数）で過去なので were。"], ["killed", "kill", "killing", "kills", "were のあとは過去分詞 killed（受け身）。"]] },
+      { en: "There is a movie / [[called]] Live Your Dream: The Taylor Anderson Story.", cj: ["映画があります", "『Live Your Dream: テイラー・アンダーソン物語』と呼ばれる"], ja: "『Live Your Dream: The Taylor Anderson Story』という映画があります。", nt: "called ～ が a movie を後ろから説明（過去分詞）。「～と呼ばれる映画」。", md: ["There is ", "a movie", "called Live Your Dream", "", "映画", "『Live Your Dream』と呼ばれる"], q: [["called", "call", "calling", "calls", "「～と呼ばれる」は過去分詞 called。"]] },
+      { en: "The woman / [[smiling in a kimono]] / in the picture / is Taylor.", cj: ["女性は", "着物を着てほほえんでいる", "写真の中の", "テイラーです"], ja: "写真の中で着物を着てほほえんでいる女性がテイラーです。", nt: "smiling ～ が The woman を後ろから説明（現在分詞）。文の動詞は is。", md: ["", "The woman", "smiling in a kimono", " is Taylor.", "女性", "着物を着てほほえんでいる"], q: [["smiling", "smile", "smiled", "smiles", "「ほほえんでいる女性」は -ing 形 smiling。"], ["is", "are", "am", "was", "主語は The woman（1人）。今も写真の中の人なので is。"]] },
+      { en: "Taylor [[started to learn]] Japanese / as a small girl / in America / and [[became attracted to]] Japan.", cj: ["テイラーは日本語を学び始めた", "小さな女の子のころに", "アメリカで", "そして日本にひきつけられた"], ja: "テイラーはアメリカで小さな女の子のころに日本語を学び始め、日本に心をひかれるようになりました。", nt: "start to ～ ＝「～し始める」。become attracted to ～ ＝「～にひきつけられる」。", q: [["learn", "learns", "learned", "learning", "to のあとは動詞のもとの形。"], ["attracted", "attract", "attracting", "attracts", "became attracted to ～ で「～にひきつけられた」。"]] },
+      { en: "She wanted to become [[a bridge]] / between Japan and America.", cj: ["彼女はかけ橋になりたかった", "日本とアメリカの間の"], ja: "彼女は日本とアメリカのかけ橋になりたいと思っていました。", nt: "bridge ＝「橋」→ここでは2つの国をつなぐ人＝「かけ橋」。between A and B ＝「AとBの間」。", q: [["bridge", "building", "bicycle", "corner", "「かけ橋」は bridge。"], ["between", "among", "about", "after", "between A and B で「AとBの間」。"]] },
+      { en: "In 2008, / she came to Ishinomaki / [[to work]] as an ALT.", cj: ["2008年に", "彼女は石巻に来ました", "ALTとして働くために"], ja: "2008年に、彼女はALT（外国語指導助手）として働くために石巻に来ました。", nt: "to work ＝「働くために」。as ～ ＝「～として」。", q: [["work", "works", "worked", "working", "to のあとは動詞のもとの形。"], ["as", "for", "at", "by", "「～として」は as。"]] },
+      { en: "She was an energetic and kind teacher / and encouraged her students / [[all the time]].", cj: ["彼女は元気で親切な先生でした", "そして生徒たちをはげました", "いつも"], ja: "彼女は元気で親切な先生で、いつも生徒たちをはげましていました。", nt: "energetic ＝「元気な」。encourage ＝「はげます」。all the time ＝「いつも」。", q: [["encouraged", "encourage", "encouraging", "encourages", "過去の話なので encouraged。"], ["energetic", "sudden", "ordinary", "nearby", "「元気な」は energetic。"]] },
+      { en: "Many students [[became interested in]] English and foreign cultures / [[thanks to]] her bright personality.", cj: ["多くの生徒が英語や外国の文化に興味をもった", "彼女の明るい性格のおかげで"], ja: "彼女の明るい性格のおかげで、多くの生徒が英語や外国の文化に興味をもつようになりました。", nt: "become interested in ～ ＝「～に興味をもつ」。thanks to ～ ＝「～のおかげで」。personality ＝「性格」。", q: [["interested", "interesting", "interest", "interests", "人が「興味をもつ」は interested。"], ["personality", "person", "picture", "program", "「性格」は personality。"]] },
+      { en: "Taylor loved her students / and all her new experiences / in Japan.", cj: ["テイラーは生徒たちを愛していた", "そして新しい経験すべてを", "日本での"], ja: "テイラーは生徒たちと、日本での新しい経験のすべてを愛していました。", nt: "experience ＝「経験」。", q: [["loved", "loving", "to love", "love", "過去の話なので loved。"], ["experiences", "experiments", "exchanges", "examples", "「経験」は experience。"]] },
+      { en: "Then, / the earthquake [[hit]].", cj: ["そのとき", "地震がおそった"], ja: "そのとき、地震がおきました（おそいました）。", nt: "hit の過去形は hit（形が同じ）。", q: [["hit", "hitting", "to hit", "hits", "過去の話。hit の過去形は hit のまま。"], ["earthquake", "emergency", "experience", "exchange"]] },
+      { en: "Taylor was at school / with her students.", cj: ["テイラーは学校にいた", "生徒たちといっしょに"], ja: "テイラーは生徒たちと学校にいました。", nt: "", q: [["was", "were", "did", "does", "主語 Taylor（1人）で過去なので was。"]] },
+      { en: "Taylor [[comforted]] the students / and took them / to a nearby safe place.", cj: ["テイラーは生徒たちを落ち着かせた", "そして彼らを連れて行った", "近くの安全な場所へ"], ja: "テイラーは生徒たちを落ち着かせ、近くの安全な場所へ連れて行きました。", nt: "comfort ＝「なぐさめる・落ち着かせる」。took は take の過去形。nearby ＝「近くの」、safe ＝「安全な」。", q: [["took", "taking", "to take", "taken", "過去の話なので take の過去形 took。"], ["safe", "sudden", "tough", "ordinary", "「安全な」は safe。"]] }
+    ],
+    vocab: [["several", "いくつかの・数人の"], ["foreigner", "外国人"], ["bridge", "橋・かけ橋"], ["between", "～の間に"], ["energetic", "元気な"], ["encourage", "はげます"], ["personality", "性格"], ["hit", "（地震などが）おそう"], ["comfort", "なぐさめる・落ち着かせる"], ["nearby", "近くの"], ["safe", "安全な"], ["all the time", "いつも"], ["lose one's life", "命を失う"], ["be killed", "（事故・災害で）亡くなる"], ["attracted", "ひきつけられた"], ["thanks to ～", "～のおかげで"], ["experience", "経験"], ["culture", "文化"]],
+    content: [
+      { q: "東日本大震災で命を失った人は約何人？", c: ["約2万人", "約2000人", "約20万人", "約200人"], ex: "About 20,000 people lost their lives ..." },
+      { q: "東日本大震災がおきたのはいつ？", c: ["2011年3月11日", "2008年3月11日", "2011年11月3日", "2001年3月11日"], ex: "on March 11, 2011" },
+      { q: "写真で着物を着てほほえんでいる女性はだれ？", c: ["テイラー", "理子", "テイラーのお母さん", "石巻の生徒"], ex: "The woman smiling in a kimono in the picture is Taylor." },
+      { q: "テイラーが日本語を学び始めたのは？", c: ["アメリカで小さな女の子のころ", "2008年に石巻で", "大学を卒業したあと", "地震のあと"], ex: "Taylor started to learn Japanese as a small girl in America." },
+      { q: "テイラーがなりたかったものは？", c: ["日本とアメリカのかけ橋", "日本語の先生", "映画の俳優", "医者"], ex: "She wanted to become a bridge between Japan and America." },
+      { q: "テイラーは石巻で何として働いた？", c: ["ALT（外国語指導助手）", "医者", "消防士", "店員"], ex: "she came to Ishinomaki to work as an ALT." },
+      { q: "生徒たちが英語や外国の文化に興味をもったのはなぜ？", c: ["テイラーの明るい性格のおかげ", "テストがあったから", "映画を見たから", "親にすすめられたから"], ex: "thanks to her bright personality" },
+      { q: "地震がおきたとき、テイラーがしたことは？", c: ["生徒を落ち着かせ、近くの安全な場所へ連れて行った", "すぐに家に帰った", "アメリカに電話した", "生徒を学校に残した"], ex: "Taylor comforted the students and took them to a nearby safe place." }
+    ]
+  },
+
+  /* ------------------------------------------------------------------ */
+  {
+    id: "u4rt2", unit: "Unit 4", part: "Read and Think 1（後半）", page: "p.54 段落4〜6",
+    title: "テイラーさんの物語②",
+    paras: [3, 5, 3], paraStart: 4,
+    scene: "レポートの後半。地震のあとのテイラーさん、家族の活動、そして筆者の考え。",
+    question: ["How do people keep Taylor's dream alive?", "人々はテイラーさんの夢をどうやって引きついでいる？"],
+    summary: [
+      "【段落4】テイラーさんは自転車でアパートへ向かうとちゅう、津波に巻きこまれ、24歳で亡くなった。",
+      "【段落5】両親と友人が石巻の学校に「テイラー文庫」を作り、交流プログラムも始めた。生徒の中には英語の先生になった人も。夢は人々の心に生きている。",
+      "【段落6】災害に備え、ふだんも危機のときも、おたがいに支え合うことが大切。"
+    ],
+    fig: "taylor2",
+    grammar: [
+      {
+        t: "It is ～ for 人 to …（人にとって…することは～だ）",
+        p: "It は「to 以下」を指します。It is important for everyone to be prepared ～ ＝「みんなにとって備えておくことが大切だ」。",
+        d: [
+          { type: "slot", parts: [["It is important", "大切だ", "v"], ["for everyone", "みんなにとって", "s"], ["to be prepared for disasters", "災害に備えておくことは", "w"]] },
+          { type: "slot", parts: [["It is necessary", "必要だ", "v"], ["for us", "私たちにとって", "s"], ["to support each other", "おたがいに支え合うことは", "w"]] }
+        ],
+        tips: ["important ＝「大切な」、necessary ＝「必要な」。"]
+      },
+      {
+        t: "覚えておきたい熟語",
+        p: "[[be caught in ～]]「～に巻きこまれる」、[[at the age of ～]]「～歳で」、[[keep on ～ing]]「～し続ける」、[[bring ～ together]]「～を結びつける」、[[no longer ～]]「もう～ない」、[[live on]]「生き続ける」、[[both A and B]]「AもBも」。",
+        d: [{ type: "slot", parts: [["Many of Taylor's students", "テイラーの生徒の多くは", "s"], ["kept on", "～し続けた", "v"], ["studying English", "英語を勉強することを", "o"]] }],
+        tips: ["rode は ride（乗る）の過去形、caught は catch（つかまえる）の過去分詞。", "keep on のあとは -ing 形（studying）。", "loved reading ＝「読むことが大好きだった」（reading は動名詞）。"]
+      }
+    ],
+    sentences: [
+      { en: "After that, / Taylor [[rode]] her bicycle / toward her apartment / and [[was caught in]] the tsunami / on her way.", cj: ["そのあと", "テイラーは自転車に乗った", "自分のアパートのほうへ", "そして津波に巻きこまれた", "そのとちゅうで"], ja: "そのあと、テイラーは自転車でアパートへ向かい、そのとちゅうで津波に巻きこまれました。", nt: "rode は ride の過去形。be caught in ～ ＝「～に巻きこまれる」。toward ＝「～のほうへ」。", q: [["rode", "riding", "to ride", "ride", "過去の話なので ride の過去形 rode。"], ["caught", "catch", "catching", "catches", "was のあとは過去分詞 caught（受け身）。"]] },
+      { en: "She died / [[at the age of]] twenty-four.", cj: ["彼女は亡くなった", "24歳で"], ja: "彼女は24歳で亡くなりました。", nt: "at the age of ～ ＝「～歳で」。", q: [["age", "old", "year", "time", "at the age of ～ で「～歳で」。"], ["died", "dying", "to die", "dead", "「亡くなった」は die の過去形 died。"]] },
+      { en: "Taylor's family / [[was shocked at]] the sudden news.", cj: ["テイラーの家族は", "その突然の知らせにショックを受けた"], ja: "テイラーの家族はその突然の知らせにショックを受けました。", nt: "be shocked at ～ ＝「～にショックを受ける」。sudden ＝「突然の」。", q: [["shocked", "shock", "shocks", "to shock", "人がショックを受けた → was shocked。"], ["sudden", "safe", "ordinary", "nearby", "「突然の」は sudden。"]] },
+      { en: "Shortly after the earthquake, / Taylor's parents and their friends / worked together / [[to create]] \"Taylor Reading Corner\" / in Ishinomaki schools.", cj: ["地震のすぐあと", "テイラーの両親と友人たちは", "協力した", "『テイラー文庫』を作るために", "石巻の学校に"], ja: "地震のすぐあと、テイラーの両親と友人たちは協力して、石巻の学校に「テイラー文庫」を作りました。", nt: "shortly after ～ ＝「～のすぐあと」。to create ＝「作るために」。", q: [["create", "creates", "created", "creating", "to のあとは動詞のもとの形。"], ["together", "toward", "yet", "alone", "worked together で「協力した」。"]] },
+      { en: "They also started / student [[exchange]] programs.", cj: ["彼らはまた始めた", "生徒の交流プログラムを"], ja: "彼らはまた、生徒の交流プログラムも始めました。", nt: "exchange ＝「交換・交流」。", q: [["exchange", "energetic", "emergency", "experience", "「交流」は exchange。"], ["started", "starting", "to start", "starts", "過去の話なので started。"]] },
+      { en: "That was [[because]] / Taylor loved [[reading]] books / for herself and to her students, / and she always wanted / to [[bring people together]].", cj: ["それは～だからです", "テイラーは本を読むことが大好きだった", "自分のためにも、生徒たちに（読んであげるのも）", "そして彼女はいつも望んでいた", "人々を結びつけることを"], ja: "それは、テイラーが自分で本を読むことも生徒に読んであげることも大好きで、いつも人々を結びつけたいと思っていたからです。", nt: "That was because ～ ＝「それは～だからだ」。loved reading（読むことが大好き）。bring ～ together ＝「～を結びつける」。", q: [["because", "so", "but", "if", "理由を言うので because。"], ["reading", "read", "reads", "was read", "loved のあとに「読むこと」→ reading。"]] },
+      { en: "Many of Taylor's students / [[kept on studying]] English, / and some became English teachers.", cj: ["テイラーの生徒の多くが", "英語を勉強し続けた", "そして何人かは英語の先生になった"], ja: "テイラーの生徒の多くは英語の勉強を続け、何人かは英語の先生になりました。", nt: "keep on ～ing ＝「～し続ける」。kept は keep の過去形。", q: [["studying", "study", "studies", "studied", "keep on のあとは -ing 形。"], ["kept", "keeping", "keeps", "to keep", "過去の話なので keep の過去形 kept。"]] },
+      { en: "Taylor is [[no longer]] with us today, / but her dream [[lives on]] / in the hearts of many people.", cj: ["テイラーは今はもう私たちといっしょにいない", "しかし彼女の夢は生き続けている", "多くの人々の心の中で"], ja: "テイラーは今はもう私たちとともにいませんが、彼女の夢は多くの人々の心の中で生き続けています。", nt: "no longer ～ ＝「もう～ない」。live on ＝「生き続ける」。", q: [["longer", "more", "yet", "ago", "no longer で「もう～ない」。"], ["lives", "live", "living", "to live", "主語 her dream（3人称単数）なので lives。"]] },
+      { en: "Every year, / many foreign people / come to live in Japan.", cj: ["毎年", "多くの外国の人々が", "日本に住むためにやって来る"], ja: "毎年、多くの外国の人々が日本に住むためにやって来ます。", nt: "", q: [["come", "comes", "coming", "to come", "主語 many foreign people（複数）なので come。"], ["foreign", "foreigner", "forget", "forest", "「外国の」は foreign。"]] },
+      { en: "[[It is important for everyone]] / to be prepared for disasters / and work together.", cj: ["みんなにとって大切です", "災害に備えておくこと", "そして協力すること"], ja: "みんなが災害に備え、協力することが大切です。", nt: "It is ～ for 人 to …。", q: [["for", "of", "at", "by", "It is important for 人 to ～ の形。"], ["prepared", "prepare", "prepares", "to prepare", "be prepared for ～ で「～に備えている」。"]] },
+      { en: "[[It is necessary for us]] / to support each other / [[both]] in ordinary times / [[and]] in times of crisis.", cj: ["私たちには必要です", "おたがいに支え合うことが", "ふだんのときも", "危機のときも"], ja: "私たちは、ふだんのときも危機のときも、おたがいに支え合うことが必要です。", nt: "both A and B ＝「AもBも」。ordinary ＝「ふつうの」、crisis ＝「危機」。each other ＝「おたがい」。", q: [["support", "supports", "supported", "supporting", "to のあとは動詞のもとの形。"], ["both", "either", "all", "each", "both A and B で「AもBも」。"]] }
+    ],
+    vocab: [["rode", "ride（乗る）の過去形"], ["bicycle", "自転車"], ["toward", "～のほうへ"], ["apartment", "アパート"], ["caught", "catch の過去・過去分詞"], ["tsunami", "津波"], ["sudden", "突然の"], ["news", "知らせ"], ["shortly", "まもなく"], ["corner", "コーナー・角"], ["exchange", "交換・交流"], ["program", "プログラム"], ["support", "支える"], ["ordinary", "ふつうの"], ["crisis", "危機"], ["be caught in ～", "～に巻きこまれる"], ["bring ～ together", "～を結びつける"], ["keep on ～ing", "～し続ける"], ["no longer ～", "もう～ない"], ["necessary", "必要な"], ["each other", "おたがい"], ["at the age of ～", "～歳で"]],
+    content: [
+      { q: "地震のあと、テイラーはどうなった？", c: ["自転車でアパートへ向かうとちゅうで津波に巻きこまれた", "車で空港に向かった", "学校に残った", "アメリカへ帰った"], ex: "Taylor rode her bicycle toward her apartment and was caught in the tsunami on her way." },
+      { q: "テイラーは何歳で亡くなった？", c: ["24歳", "20歳", "42歳", "14歳"], ex: "at the age of twenty-four" },
+      { q: "両親と友人たちが石巻の学校に作ったものは？", c: ["テイラー文庫（本のコーナー）", "避難所", "映画館", "英語教室"], ex: "to create \"Taylor Reading Corner\" in Ishinomaki schools" },
+      { q: "両親たちがほかに始めたことは？", c: ["生徒の交流プログラム", "映画づくり", "英語のテスト", "防災訓練"], ex: "They also started student exchange programs." },
+      { q: "テイラー文庫や交流プログラムを作った理由は？", c: ["テイラーが本を読むことが好きで、人々を結びつけたかったから", "学校に本がなかったから", "生徒にたのまれたから", "映画をつくるため"], ex: "That was because Taylor loved reading books ... and she always wanted to bring people together." },
+      { q: "テイラーの生徒たちのその後は？", c: ["英語の勉強を続け、英語の先生になった人もいる", "全員アメリカに住んだ", "英語の勉強をやめた", "映画をつくった"], ex: "Many of Taylor's students kept on studying English, and some became English teachers." },
+      { q: "筆者が最後にいちばん言いたいことは？", c: ["災害に備え、ふだんも危機のときもおたがいに支え合うことが大切", "外国に住むことが大切", "映画を見ることが大切", "英語の先生になることが大切"], ex: "It is necessary for us to support each other both in ordinary times and in times of crisis." }
+    ]
+  },
+
+  /* ------------------------------------------------------------------ */
+  {
+    id: "u5p1", unit: "Unit 5", part: "Part 1", page: "p.62",
+    title: "ガンディーの紹介",
+    scene: "アナが、写真を見せながらガンディーについて発表しています。",
+    question: ["What is Gandhi known for?", "ガンディーは何で知られている？"],
+    summary: [
+      "アナはインターネットで見つけた写真を見せている。写っているのはマハトマ・ガンディー。",
+      "彼の顔はインドのすべてのルピー紙幣に印刷されている。インドの人々がとても尊敬している指導者。",
+      "1869年10月2日生まれ。その日はインドの祝日で、国際非暴力デーでもある。"
+    ],
+    fig: "gandhi1",
+    grammar: [
+      {
+        t: "名詞を「主語＋動詞」で後ろから説明する（接触節）",
+        p: "a picture（写真）のうしろに [[I found ～（私が見つけた）]] をそのままくっつけると、「私が見つけた写真」になります。",
+        d: [
+          { type: "md", before: "This is ", n: "a picture", m: "I found on the internet", after: ".", nj: "写真", mj: "私がインターネットで見つけた" },
+          { type: "md", before: "He's ", n: "a leader", m: "Indian people respect greatly", after: ".", nj: "指導者", mj: "インドの人々がとても尊敬している" }
+        ],
+        tips: ["I found a picture on the internet.（ふつうの文）→ This is a picture I found on the internet.（説明する文）", "名詞のあとに that / which を入れてもOK（Key Sentence 18）。", "Do you know who this person is? は間接疑問（Unit 4 で学習）。"]
+      }
+    ],
+    sentences: [
+      { en: "Look.", cj: ["見て"], ja: "見て。", nt: "", q: [] },
+      { en: "This is [[a picture]] / [[I found]] / on the internet.", cj: ["これは写真です", "私が見つけた", "インターネットで"], ja: "これは私がインターネットで見つけた写真です。", nt: "a picture を I found ～ が後ろから説明。", md: ["This is ", "a picture", "I found on the internet", ".", "写真", "私がインターネットで見つけた"], q: [["found", "finding", "to find", "finds", "「私が見つけた」は過去形 found（find の過去形）。"], ["on", "in", "at", "of", "on the internet で「インターネットで」。"]] },
+      { en: "Do you know / [[who this person is]]?", cj: ["あなたは知っていますか", "この人がだれか"], ja: "この人がだれか知っていますか。", nt: "間接疑問：who ＋ 主語 ＋ 動詞。", q: [["this person is", "is this person", "this person are", "are this person", "who のうしろは「主語 → 動詞」の順。"], ["who", "what", "where", "when", "「だれ」は who。"]] },
+      { en: "His name is Mahatma Gandhi.", cj: ["彼の名前はマハトマ・ガンディーです"], ja: "彼の名前はマハトマ・ガンディーです。", nt: "", q: [["His", "He", "Him", "Her", "「彼の」は His。"]] },
+      { en: "His image / [[is printed]] / on all Indian rupee notes.", cj: ["彼の肖像は", "印刷されている", "インドのすべてのルピー紙幣に"], ja: "彼の肖像はインドのすべてのルピー紙幣に印刷されています。", nt: "is printed は受け身「印刷されている」。note ＝「紙幣」。", q: [["printed", "print", "prints", "to print", "is のあとは過去分詞 printed（受け身）。"], ["image", "imagine", "internet", "independence", "「肖像・姿」は image。"]] },
+      { en: "He's [[a leader]] / [[Indian people respect]] / greatly.", cj: ["彼は指導者です", "インドの人々が尊敬している", "とても"], ja: "彼はインドの人々がとても尊敬している指導者です。", nt: "a leader を Indian people respect ～ が後ろから説明。He's ＝ He is。", md: ["He's ", "a leader", "Indian people respect greatly", ".", "指導者", "インドの人々がとても尊敬している"], q: [["respect", "respects", "respecting", "to respect", "主語 Indian people（複数）なので respect。"], ["leader", "leaders", "lead", "leading", "「指導者」は leader。a があるので1人。"]] },
+      { en: "Gandhi [[was born]] / on October 2, 1869.", cj: ["ガンディーは生まれた", "1869年10月2日に"], ja: "ガンディーは1869年10月2日に生まれました。", nt: "be born ＝「生まれる」。", q: [["born", "birthday", "bear", "birth", "was born で「生まれた」。"], ["was", "did", "does", "were", "主語 Gandhi（1人）の過去なので was。"]] },
+      { en: "His birthday is now / an Indian [[national]] holiday.", cj: ["彼の誕生日は今では～です", "インドの国民の祝日"], ja: "彼の誕生日は今ではインドの国民の祝日です。", nt: "national ＝「国の・国民の」。holiday ＝「祝日」。", q: [["national", "natural", "nation", "nationally", "「国民の」は national。"], ["holiday", "history", "hobby", "homework", "「祝日」は holiday。"]] },
+      { en: "It's also / the International Day of [[Non-Violence]].", cj: ["それはまた～でもあります", "国際非暴力デー"], ja: "それは国際非暴力デーでもあります。", nt: "non-violence ＝「非暴力（暴力を使わないこと）」。", q: [["Non-Violence", "Violence", "Fight", "Protest", "「非暴力」は Non-Violence。"]] },
+      { ks: "Key Sentence 15", en: "I found a picture / on the internet.", cj: ["私は写真を見つけた", "インターネットで"], ja: "私はインターネットで写真を見つけました。", nt: "ふつうの文。", q: [["found", "finding", "to find", "finds", "過去形 found。"]] },
+      { ks: "Practice", en: "This is [[a gift]] / [[my sister gave]] me.", cj: ["これはプレゼントです", "姉が私にくれた"], ja: "これは姉が私にくれたプレゼントです。", nt: "a gift を my sister gave me が後ろから説明。", md: ["This is ", "a gift", "my sister gave me", ".", "プレゼント", "姉が私にくれた"], q: [["my sister gave", "gave my sister", "my sister giving", "is my sister", "名詞のうしろに「主語 my sister → 動詞 gave」。"]] },
+      { ks: "Practice", en: "This is [[a picture]] / [[my uncle took]].", cj: ["これは写真です", "私のおじがとった"], ja: "これは私のおじがとった写真です。", nt: "", md: ["This is ", "a picture", "my uncle took", ".", "写真", "私のおじがとった"], q: [["took", "taking", "to take", "take", "「とった」は take の過去形 took。"]] },
+      { ks: "Practice", en: "This is [[the comic book]] / [[my classmate recommended]].", cj: ["これはマンガです", "私のクラスメートがすすめた"], ja: "これは私のクラスメートがすすめてくれたマンガです。", nt: "", md: ["This is ", "the comic book", "my classmate recommended", ".", "マンガ", "クラスメートがすすめた"], q: [["recommended", "recommending", "to recommend", "recommend", "「すすめた」は過去形 recommended。"]] }
+    ],
+    vocab: [["internet", "インターネット"], ["person", "人"], ["image", "肖像・姿"], ["print", "印刷する"], ["leader", "指導者・リーダー"], ["greatly", "大いに・とても"], ["born", "（be born で）生まれる"], ["national", "国の・国民の"], ["non-violence", "非暴力"], ["Indian", "インドの"], ["rupee", "ルピー（インドのお金）"], ["note", "紙幣"], ["holiday", "祝日"], ["respect", "尊敬する"], ["on the internet", "インターネットで"], ["international", "国際的な"], ["gift", "贈り物"]],
+    content: [
+      { q: "What is Gandhi known for?（ガンディーについて正しいものは？）", c: ["インドのルピー紙幣に肖像が印刷されている", "アメリカの大統領だった", "日本で生まれた", "映画の俳優だった"], ex: "His image is printed on all Indian rupee notes." },
+      { q: "ガンディーの誕生日は？", c: ["1869年10月2日", "1969年10月2日", "1869年2月10日", "1896年10月2日"], ex: "Gandhi was born on October 2, 1869." },
+      { q: "ガンディーの誕生日は今、何の日？", c: ["インドの祝日・国際非暴力デー", "子どもの日", "国際平和デー", "映画の日"], ex: "His birthday is now an Indian national holiday. It's also the International Day of Non-Violence." },
+      { q: "アナが見せている写真はどこで見つけた？", c: ["インターネット", "図書館", "教科書", "博物館"], ex: "This is a picture I found on the internet." },
+      { q: "インドの人々はガンディーをどう思っている？", c: ["とても尊敬している", "知らない", "こわがっている", "きらっている"], ex: "He's a leader Indian people respect greatly." }
+    ]
+  },
+
+  /* ------------------------------------------------------------------ */
+  {
+    id: "u5p2", unit: "Unit 5", part: "Part 2", page: "p.63",
+    title: "ガンディーと非暴力",
+    scene: "アナの発表のあと、純とアナがガンディーについて話しています。",
+    question: ["How did Gandhi work for Indian independence?", "ガンディーはどうやってインドの独立のために活動した？"],
+    summary: [
+      "ガンディーは世界中の多くの人に影響をあたえた人。インドの独立のために活動した。",
+      "方法は「非暴力」。暴力を使わなかったので、人権のために戦う人々から今も尊敬されている。",
+      "抗議するために断食（fast ＝ ほとんど・全く食べないこと）もした。純「大変そう！」"
+    ],
+    fig: "gandhi2",
+    grammar: [
+      {
+        t: "人を後ろから説明する who（関係代名詞・主格）",
+        p: "「どんな人か」を説明するとき、人のうしろに [[who ＋ 動詞 ～]] をつけます。who は he / she などの代わりです。",
+        d: [
+          { type: "rel", a: ["Gandhi is ", "a man", "."], b: ["He", " has influenced a lot of people."], c: ["Gandhi is ", "a man", "who", " has influenced a lot of people."], nj: "男性（人）", mj: "多くの人々に影響をあたえてきた" },
+          { type: "md", before: "", n: "people", m: "who fight for human rights", after: "", nj: "人々", mj: "人権のために戦う" }
+        ],
+        tips: ["who のすぐあとは [[動詞]]。動詞の形は前の名詞に合わせる（a boy who [[loves]] ～）。", "人には who、もの には which、that はどちらにも使える。"]
+      },
+      {
+        t: "受け身・そのほか",
+        p: "he's still [[respected by]] people ＝「今でも人々に尊敬されている」（is ＋ 過去分詞）。",
+        d: [{ type: "slot", parts: [["He's", "彼は（He is）", "s"], ["still respected", "今でも尊敬されている", "v"], ["by people who fight for human rights", "人権のために戦う人々によって", "o"]] }],
+        tips: ["Do you know how he did it? は間接疑問（how ＋ 主語 ＋ 動詞）。", "go on a fast ＝「断食をする」、to protest ＝「抗議するために」。", "That sounds tough. ＝「それは大変そうだね」。"]
+      }
+    ],
+    sentences: [
+      { sp: "Jun", en: "Nice presentation, Anna.", cj: ["いい発表だったね、アナ"], ja: "いい発表だったね、アナ。", nt: "presentation ＝「発表」。", q: [["presentation", "present", "president", "print", "「発表」は presentation。"]] },
+      { sp: "Jun", en: "That was interesting.", cj: ["おもしろかった"], ja: "おもしろかったよ。", nt: "interesting ＝「（ものが）おもしろい」。", q: [["interesting", "interested", "interest", "interests", "「（話が）おもしろい」は interesting。"]] },
+      { sp: "Anna", en: "Thanks. / Gandhi is [[a man]] / [[who has influenced a lot of people]] / around the world.", cj: ["ありがとう", "ガンディーは人です", "多くの人々に影響をあたえてきた", "世界中の"], ja: "ありがとう。ガンディーは世界中の多くの人々に影響をあたえてきた人なの。", nt: "who ～ が a man を後ろから説明。has influenced は現在完了。", md: ["Gandhi is ", "a man", "who has influenced a lot of people", ".", "人（男性）", "多くの人々に影響をあたえてきた"], q: [["who", "which", "what", "whose", "前の名詞 a man は「人」なので who。"], ["influenced", "influence", "influencing", "influences", "has のあとは過去分詞 influenced。"]] },
+      { sp: "Jun", en: "He worked for Indian [[independence]], / right?", cj: ["彼はインドの独立のために活動した", "だよね？"], ja: "彼はインドの独立のために活動したんだよね？", nt: "independence ＝「独立」。", q: [["independence", "international", "information", "interesting", "「独立」は independence。"], ["worked", "working", "to work", "work", "過去のことなので worked。"]] },
+      { sp: "Anna", en: "Yes. / Do you know / [[how he did it]]?", cj: ["ええ", "知ってる？", "彼がどうやってそれをしたか"], ja: "ええ。彼がどうやってそれをしたか知ってる？", nt: "間接疑問：how ＋ 主語 ＋ 動詞。", q: [["he did", "did he", "he does", "does he", "how のうしろは「主語 → 動詞」の順なので he did。"]] },
+      { sp: "Jun", en: "Non-violence?", cj: ["非暴力？"], ja: "非暴力？", nt: "", q: [["Non-violence", "Violence", "Independence", "Protest", "「非暴力」は Non-violence。"]] },
+      { sp: "Anna", en: "Right. / He [[never]] used violence, / so he's still [[respected]] / by [[people]] / [[who fight for human rights]].", cj: ["そのとおり", "彼は決して暴力を使わなかった", "だから今でも尊敬されている", "人々によって", "人権のために戦う"], ja: "そのとおり。彼は決して暴力を使わなかったから、人権のために戦う人々に今でも尊敬されているの。", nt: "never ＝「決して～ない」。is respected by ～ ＝「～に尊敬されている」（受け身）。who ～ が people を後ろから説明。", md: ["by ", "people", "who fight for human rights", "", "人々", "人権のために戦う"], q: [["respected", "respect", "respecting", "respects", "he's（he is）のあとは過去分詞 respected（受け身）。"], ["who", "which", "what", "where", "前の名詞 people は「人」なので who。"], ["never", "ever", "yet", "already", "「決して～ない」は never。"]] },
+      { sp: "Jun", en: "I see. / I want to learn more / about him.", cj: ["なるほど", "もっと知りたい", "彼について"], ja: "なるほど。彼についてもっと知りたいな。", nt: "", q: [["more", "most", "many", "very", "「もっと」は more。"], ["learn", "learns", "learned", "learning", "to のあとは動詞のもとの形。"]] },
+      { sp: "Anna", en: "Well, / he also [[went on fasts]] / [[to protest]].", cj: ["そうね", "彼は断食もした", "抗議するために"], ja: "そうね、彼は抗議するために断食もしたのよ。", nt: "go on a fast ＝「断食をする」。went は go の過去形。to protest ＝「抗議するために」。", q: [["went", "going", "gone", "to go", "過去のことなので go の過去形 went。"], ["protest", "protests", "protested", "protesting", "to のあとは動詞のもとの形。"]] },
+      { sp: "Jun", en: "\"Fasts\"?", cj: ["「fasts（断食）」？"], ja: "「fasts」って？", nt: "", q: [] },
+      { sp: "Anna", en: "A \"fast\" means / [[eating]] little or no food.", cj: ["「fast」は意味する", "食べ物をほとんど、または全く食べないことを"], ja: "「fast（断食）」は、食べ物をほとんど、または全く食べないことよ。", nt: "eating ＝「食べること」（動名詞）。little ＝「ほとんど～ない」。", q: [["eating", "eat", "eats", "ate", "means のあとに「食べること」→ eating。"], ["means", "mean", "meaning", "to mean", "主語 A \"fast\"（3人称単数）なので means。"]] },
+      { sp: "Jun", en: "Wow. / That [[sounds]] tough.", cj: ["わあ", "それは大変そうだ"], ja: "わあ。それは大変そうだね。", nt: "sound ～ ＝「～に聞こえる・～そうだ」。tough ＝「大変な・きつい」。", q: [["tough", "tired", "safe", "sudden", "「大変な・きつい」は tough。"], ["sounds", "sound", "sounding", "to sound", "主語 That（3人称単数）なので sounds。"]] },
+      { ks: "Key Sentence 16", en: "Gandhi is [[a man]] / [[who has influenced a lot of people]].", cj: ["ガンディーは人です", "多くの人々に影響をあたえてきた"], ja: "ガンディーは多くの人々に影響をあたえてきた人です。", nt: "", q: [["who", "which", "what", "whose", "「人」を説明するので who。"]] },
+      { ks: "Practice", en: "Eddy is [[a classmate]] / [[who can cook well]].", cj: ["エディはクラスメートです", "料理が上手な"], ja: "エディは料理が上手なクラスメートです。", nt: "", md: ["Eddy is ", "a classmate", "who can cook well", ".", "クラスメート", "料理が上手な"], q: [["who", "which", "whose", "what", "「人」を説明するので who。"]] },
+      { ks: "Practice", en: "Jun is [[a boy]] / [[who loves to play soccer]].", cj: ["純は少年です", "サッカーをするのが大好きな"], ja: "純はサッカーをするのが大好きな少年です。", nt: "who のあとの動詞は a boy（1人）に合わせて loves。", q: [["loves", "love", "loving", "is love", "who のあとの動詞は前の a boy（3人称単数）に合わせて loves。"]] },
+      { ks: "Practice", en: "Ms. Chen is [[a teacher]] / [[who came from Canada]] / two years ago.", cj: ["チェン先生は先生です", "カナダから来た", "2年前に"], ja: "チェン先生は2年前にカナダから来た先生です。", nt: "", md: ["Ms. Chen is ", "a teacher", "who came from Canada two years ago", ".", "先生", "2年前にカナダから来た"], q: [["came", "come", "comes", "coming", "two years ago（2年前）なので過去形 came。"], ["who", "which", "what", "where", "「人」を説明するので who。"]] }
+    ],
+    vocab: [["presentation", "発表"], ["interesting", "おもしろい"], ["influence", "影響をあたえる"], ["around the world", "世界中の"], ["independence", "独立"], ["violence", "暴力"], ["respect", "尊敬する"], ["fight", "戦う"], ["human rights", "人権"], ["protest", "抗議する"], ["fast", "断食"], ["go on a fast", "断食をする"], ["tough", "大変な・きつい"], ["mean", "意味する"], ["never", "決して～ない"], ["sound ～", "～に聞こえる"], ["little", "ほとんど～ない"]],
+    content: [
+      { q: "How did Gandhi work for Indian independence?", c: ["非暴力（暴力を使わない方法）で", "戦争で", "お金で", "歌で"], ex: "Do you know how he did it? — Non-violence? — Right." },
+      { q: "ガンディーが今でも尊敬されているのはだれから？", c: ["人権のために戦う人々", "インドの子どもだけ", "日本の政治家だけ", "だれからも尊敬されていない"], ex: "he's still respected by people who fight for human rights." },
+      { q: "ガンディーが抗議するためにしたことは？", c: ["断食", "暴力", "映画づくり", "旅行"], ex: "he also went on fasts to protest." },
+      { q: "\"fast\" の意味は？", c: ["食べ物をほとんど・全く食べないこと", "速く走ること", "朝ごはん", "早起き"], ex: "A \"fast\" means eating little or no food." },
+      { q: "純の最後の感想は？", c: ["大変そうだ", "おいしそうだ", "簡単そうだ", "つまらない"], ex: "That sounds tough." },
+      { q: "純がこれからしたいことは？", c: ["ガンディーについてもっと学ぶ", "インドに旅行する", "断食をする", "発表をする"], ex: "I want to learn more about him." }
+    ]
+  },
+
+  /* ------------------------------------------------------------------ */
+  {
+    id: "u5ks", unit: "Unit 5", part: "Key Sentences 17・18", page: "（Part 3）",
+    title: "that / which でものを説明",
+    passage: false,
+    scene: "純が図書室で借りた本や、学校のお気に入りのものを紹介しています。",
+    question: ["What is the difference between who and which?", "who と which のちがいは？"],
+    summary: [
+      "ものを後ろから説明するときは [[that]] または [[which]] を使う。",
+      "Key Sentence 17：that / which のすぐあとに動詞（主格）。",
+      "Key Sentence 18：that / which のあとに「主語＋動詞」（目的格）。この that / which は省略できる。"
+    ],
+    fig: "rel",
+    grammar: [
+      {
+        t: "that / which ＋ 動詞（主格）",
+        p: "a movie（映画）を「人々を幸せにする」と説明 → a movie [[that makes people happy]]。that / which は it の代わり。",
+        d: [{ type: "rel", a: ["This is ", "a movie", "."], b: ["It", " makes people happy."], c: ["This is ", "a movie", "that", " makes people happy."], nj: "映画", mj: "人々を幸せにする" }],
+        tips: ["make ＋ 人 ＋ 気持ち ＝「人を～にする」（makes people happy）。", "動詞の形は前の名詞に合わせる（a movie → makes）。"]
+      },
+      {
+        t: "that / which ＋ 主語 ＋ 動詞（目的格）",
+        p: "a picture を「私がインターネットで見つけた」と説明 → a picture [[that I found]] on the internet。この that / which は[[なくてもOK]]（p.62 Key Sentence 15 と同じ意味）。",
+        d: [
+          { type: "rel", a: ["This is ", "a picture", "."], b: ["I found ", "it", " on the internet."], c: ["This is ", "a picture", "that", " I found on the internet."], nj: "写真", mj: "私がインターネットで見つけた", obj: true },
+          { type: "same", title: "3つとも同じ意味", rows: ["This is a picture [[that]] I found on the internet.", "This is a picture [[which]] I found on the internet.", "This is a picture I found on the internet."] }
+        ],
+        tips: ["主格（that のすぐあとに動詞）は省略できない。", "目的格（that のあとに 主語＋動詞）は省略できる。"]
+      }
+    ],
+    sentences: [
+      { ks: "Key Sentence 17", en: "This is [[a movie]] / [[that makes people happy]].", cj: ["これは映画です", "人々を幸せにする"], ja: "これは人々を幸せにする映画です。", nt: "that（which）のすぐあとに動詞 makes。", md: ["This is ", "a movie", "that makes people happy", ".", "映画", "人々を幸せにする"], q: [["that", "who", "what", "where", "「もの（映画）」を説明するので that（which でもOK）。"], ["makes", "make", "making", "to make", "前の名詞 a movie（1つ）に合わせて makes。"]] },
+      { ks: "Practice", en: "This is [[a book]] / [[that moved me]].", cj: ["これは本です", "私を感動させた"], ja: "これは私を感動させた本です。", nt: "move ＝「感動させる」。", md: ["This is ", "a book", "that moved me", ".", "本", "私を感動させた"], q: [["that", "who", "what", "whose", "「もの（本）」を説明するので that。"], ["moved", "move", "moving", "to move", "過去のことなので moved。"]] },
+      { ks: "Practice", en: "This is [[the word]] / [[that made me positive]].", cj: ["これは言葉です", "私を前向きにした"], ja: "これは私を前向きにしてくれた言葉です。", nt: "make ＋ 人 ＋ 気持ち ＝「人を～にする」。positive ＝「前向きな」。", q: [["made", "make", "making", "to make", "過去のことなので make の過去形 made。"], ["that", "who", "what", "where", "「もの（言葉）」を説明するので that。"]] },
+      { ks: "Practice", en: "This is [[a photo]] / [[which shows Gandhi's family]].", cj: ["これは写真です", "ガンディーの家族が写っている"], ja: "これはガンディーの家族が写っている写真です。", nt: "show ＝「見せる・示す」→「写っている」。", md: ["This is ", "a photo", "which shows Gandhi's family", ".", "写真", "ガンディーの家族が写っている"], q: [["which", "who", "what", "where", "「もの（写真）」を説明するので which。"], ["shows", "show", "showing", "to show", "前の名詞 a photo（1つ）に合わせて shows。"]] },
+      { ks: "Key Sentence 18", en: "This is [[a picture]] / [[that I found]] / on the internet.", cj: ["これは写真です", "私が見つけた", "インターネットで"], ja: "これは私がインターネットで見つけた写真です。", nt: "that（which）のあとに 主語 I ＋ 動詞 found。この that は省略できる。", md: ["This is ", "a picture", "that I found on the internet", ".", "写真", "私がインターネットで見つけた"], q: [["that", "who", "what", "where", "「もの（写真）」を説明するので that。"], ["found", "finding", "to find", "finds", "過去形 found。"]] },
+      { ks: "Practice", en: "This is [[a T-shirt]] / [[that the students designed]] / for Sports Day.", cj: ["これはTシャツです", "生徒たちがデザインした", "体育祭のために"], ja: "これは生徒たちが体育祭のためにデザインしたTシャツです。", nt: "", md: ["This is ", "a T-shirt", "that the students designed", "", "Tシャツ", "生徒たちがデザインした"], q: [["designed", "designing", "to design", "designs", "過去のことなので designed。"], ["that", "who", "what", "where", "「もの（Tシャツ）」を説明するので that。"]] },
+      { ks: "Practice", en: "This is [[the gym]] / [[which the students use]] / in their P.E. class.", cj: ["これは体育館です", "生徒たちが使う", "体育の授業で"], ja: "これは生徒たちが体育の授業で使う体育館です。", nt: "P.E. ＝「体育」。", q: [["which", "who", "what", "where", "「もの（体育館）」を説明するので which。"], ["use", "uses", "using", "to use", "主語 the students（複数）なので use。"]] },
+      { ks: "Practice", en: "This is [[the piano]] / [[that the students play]] / in their music class.", cj: ["これはピアノです", "生徒たちがひく", "音楽の授業で"], ja: "これは生徒たちが音楽の授業でひくピアノです。", nt: "", q: [["play", "plays", "playing", "to play", "主語 the students（複数）なので play。"], ["that", "who", "what", "where", "「もの（ピアノ）」を説明するので that。"]] }
+    ],
+    vocab: [["move", "感動させる"], ["positive", "前向きな"], ["photo", "写真"], ["show", "見せる・示す"], ["design", "デザインする"], ["Sports Day", "体育祭"], ["gym", "体育館"], ["P.E.", "体育"], ["word", "言葉・単語"], ["family", "家族"]],
+    content: [
+      { q: "「もの」を後ろから説明するときに使う語は？", c: ["that / which", "who だけ", "what", "where"], ex: "もの → that / which、人 → who / that。" },
+      { q: "「人」を後ろから説明するときに使う語は？", c: ["who / that", "which だけ", "what", "whose だけ"], ex: "人 → who（that でもOK）。" },
+      { q: "省略できる that / which はどっち？", c: ["あとに「主語＋動詞」が続く that / which", "あとにすぐ動詞が続く that / which", "どちらも省略できない", "どちらも省略できる"], ex: "This is a picture (that) I found ～ の that は省略OK。" },
+      { q: "This is a movie that makes people happy. の意味は？", c: ["これは人々を幸せにする映画です。", "これは人々が幸せにした映画です。", "これは映画で、人々は幸せです。", "人々はこの映画を作りました。"], ex: "that makes people happy が a movie を説明。" }
+    ]
+  },
+
+  /* ------------------------------------------------------------------ */
+  {
+    id: "gram", unit: "文法まとめ", part: "Grammar for Communication 3", page: "名詞を後ろから説明する",
+    title: "名詞を後ろから説明する6つの形",
+    passage: false,
+    scene: "理子とエディが、公園で見つけたネコたちについて話しています。「どのネコ？」をはっきりさせるために、名詞のうしろに説明をつけます。",
+    question: ["Which cat is so cute?", "どのネコがかわいいの？"],
+    summary: [
+      "日本語は説明が「前」：ベンチの上の → ネコ。英語は説明が「後ろ」：cat ← on the bench。",
+      "後ろにつける説明は6種類：①前置詞 ②to ～ ③-ing ④過去分詞 ⑤主語＋動詞 ⑥who / which / that。",
+      "ただし1語だけ（sleeping など）のときは名詞の前：That sleeping cat。"
+    ],
+    fig: "six",
+    grammar: [
+      {
+        t: "① 前置詞 ＋ 語句",
+        p: "on the bench（ベンチの上の）、of my friends（私の友達の）。",
+        d: [{ type: "md", before: "", n: "That cat", m: "on the bench", after: " is so cute.", nj: "あのネコ", mj: "ベンチの上の" }],
+        tips: []
+      },
+      {
+        t: "② 不定詞（to ＋ 動詞のもとの形）",
+        p: "「～するための・～すべき」。",
+        d: [{ type: "md", before: "We have ", n: "many things", m: "to study", after: ".", nj: "たくさんのこと", mj: "勉強すべき" }],
+        tips: []
+      },
+      {
+        t: "③ 現在分詞（-ing）＝「～している」",
+        p: "名詞が自分で「している」ときは -ing。",
+        d: [
+          { type: "md", before: "", n: "The boy", m: "standing by me", after: " is Eddy.", nj: "少年", mj: "私のそばに立っている" },
+          { type: "md", before: "Do you remember ", n: "the boy", m: "wearing a green shirt", after: "?", nj: "少年", mj: "緑のシャツを着ている" }
+        ],
+        tips: ["教科書の本文：The woman [[smiling in a kimono]]（着物を着てほほえんでいる女性）"]
+      },
+      {
+        t: "④ 過去分詞 ＝「～された・～される」",
+        p: "名詞が「される」側のときは過去分詞。",
+        d: [{ type: "md", before: "This is ", n: "a book", m: "written by Soseki", after: ".", nj: "本", mj: "漱石によって書かれた" }],
+        tips: ["教科書の本文：a movie [[called]] Live Your Dream（『Live Your Dream』と呼ばれる映画）", "-ing か 過去分詞か まよったら → 名詞が「する」側？「される」側？"]
+      },
+      {
+        t: "⑤ 主語 ＋ 動詞（接触節）",
+        p: "名詞のうしろに「だれが～した」をそのままつける。",
+        d: [
+          { type: "md", before: "This is ", n: "a picture", m: "my father took", after: ".", nj: "写真", mj: "私の父がとった" },
+          { type: "md", before: "Ms. Chen is ", n: "a teacher", m: "I respect", after: ".", nj: "先生", mj: "私が尊敬する" }
+        ],
+        tips: ["名詞のあとに that / which を入れてもよい（目的格の関係代名詞）。"]
+      },
+      {
+        t: "⑥ 関係代名詞 who / which / that",
+        p: "人 → [[who]]（that）、もの → [[which]]（that）。すぐあとに動詞がくる形（主格）と、主語＋動詞がくる形（目的格）がある。",
+        d: [
+          { type: "md", before: "He is ", n: "the boy", m: "who came to our house before", after: ".", nj: "少年", mj: "以前私たちの家に来た" },
+          { type: "md", before: "This is ", n: "a school", m: "that was built in 2000", after: ".", nj: "学校", mj: "2000年に建てられた" },
+          { type: "md", before: "This is ", n: "the bus", m: "which goes to the hospital", after: ".", nj: "バス", mj: "病院へ行く" }
+        ],
+        tips: ["目的格（あとに主語＋動詞）の that / which は省略できる。"]
+      },
+      {
+        t: "1語だけなら名詞の前",
+        p: "-ing や 過去分詞でも、1語だけで説明するときは名詞の[[前]]に置きます（日本語と同じ順番）。",
+        d: [{ type: "same", title: "1語だけのとき", rows: ["That [[sleeping]] cat is so cute.（あの眠っているネコ）", "This word is used in [[spoken]] language.（話される言葉＝話し言葉）"] }],
+        tips: []
+      }
+    ],
+    sentences: [
+      { en: "This is [[a picture]] / [[of my friends]].", cj: ["これは写真です", "私の友達の"], ja: "これは私の友達の写真です。", nt: "① 前置詞 of ＋ 語句。", md: ["This is ", "a picture", "of my friends", ".", "写真", "私の友達の"], q: [["of", "on", "by", "at", "「～の写真」は a picture of ～。"]] },
+      { en: "That cat / [[on the bench]] / is so cute.", cj: ["あのネコは", "ベンチの上の", "とてもかわいい"], ja: "ベンチの上のあのネコはとてもかわいい。", nt: "① 前置詞 on ＋ 語句。", q: [["on", "of", "to", "for", "「ベンチの上の」は on the bench。"]] },
+      { en: "We have [[many things]] / [[to study]].", cj: ["私たちにはたくさんのことがある", "勉強すべき"], ja: "私たちには勉強すべきことがたくさんあります。", nt: "② 不定詞 to ＋ 動詞のもとの形。", md: ["We have ", "many things", "to study", ".", "たくさんのこと", "勉強すべき"], q: [["study", "studying", "studied", "studies", "to のあとは動詞のもとの形。"]] },
+      { en: "[[The boy]] / [[standing by me]] / is Eddy.", cj: ["少年は", "私のそばに立っている", "エディです"], ja: "私のそばに立っている少年はエディです。", nt: "③ 現在分詞（-ing）。", md: ["", "The boy", "standing by me", " is Eddy.", "少年", "私のそばに立っている"], q: [["standing", "stands", "stood", "stand", "「立っている少年」→ -ing 形 standing。"]] },
+      { en: "Do you remember [[the boy]] / [[wearing a green shirt]]?", cj: ["あの少年を覚えていますか", "緑のシャツを着ている"], ja: "緑のシャツを着ている少年を覚えていますか。", nt: "③ 現在分詞（-ing）。", q: [["wearing", "wears", "wore", "wear", "「着ている少年」→ -ing 形 wearing。"]] },
+      { en: "This is [[a book]] / [[written by Soseki]].", cj: ["これは本です", "漱石によって書かれた"], ja: "これは漱石によって書かれた本です。", nt: "④ 過去分詞。本は「書かれる」側。", md: ["This is ", "a book", "written by Soseki", ".", "本", "漱石によって書かれた"], q: [["written", "writing", "wrote", "writes", "本は「書かれた」側なので過去分詞 written。"]] },
+      { en: "This is [[a picture]] / [[(that) my father took]].", cj: ["これは写真です", "私の父がとった"], ja: "これは私の父がとった写真です。", nt: "⑤ 主語＋動詞。that は省略できる。", q: [["took", "taken", "taking", "takes", "「父がとった」→ 過去形 took。"]] },
+      { en: "Ms. Chen is [[a teacher]] / [[(that) I respect]].", cj: ["チェン先生は先生です", "私が尊敬する"], ja: "チェン先生は私が尊敬する先生です。", nt: "⑤ 主語＋動詞。", md: ["Ms. Chen is ", "a teacher", "I respect", ".", "先生", "私が尊敬する"], q: [["respect", "respects", "respecting", "to respect", "主語 I なので respect。"]] },
+      { en: "This is [[the book]] / [[(which) I bought yesterday]].", cj: ["これは本です", "私が昨日買った"], ja: "これは私が昨日買った本です。", nt: "⑤⑥ which は省略できる。", q: [["bought", "buy", "buying", "buys", "yesterday なので buy の過去形 bought。"]] },
+      { en: "He is [[the boy]] / [[who came to our house]] / before.", cj: ["彼は少年です", "私たちの家に来た", "以前"], ja: "彼は以前私たちの家に来た少年です。", nt: "⑥ 人 → who。", q: [["who", "which", "what", "whose", "「人（少年）」を説明するので who。"]] },
+      { en: "This is [[a school]] / [[that was built]] / in 2000.", cj: ["これは学校です", "建てられた", "2000年に"], ja: "これは2000年に建てられた学校です。", nt: "⑥ もの → that。that のあとは受け身 was built。", md: ["This is ", "a school", "that was built in 2000", ".", "学校", "2000年に建てられた"], q: [["built", "build", "building", "builds", "was のあとは過去分詞 built（建てられた）。"]] },
+      { en: "This is [[the bus]] / [[which goes to the hospital]].", cj: ["これはバスです", "病院へ行く"], ja: "これは病院へ行くバスです。", nt: "⑥ もの → which。", q: [["which", "who", "what", "where", "「もの（バス）」を説明するので which。"], ["goes", "go", "going", "to go", "前の名詞 the bus（1つ）に合わせて goes。"]] },
+      { en: "That [[sleeping]] cat / is so cute.", cj: ["あの眠っているネコは", "とてもかわいい"], ja: "あの眠っているネコはとてもかわいい。", nt: "1語だけなので名詞の前。", q: [["sleeping", "sleeps", "slept", "sleep", "「眠っているネコ」→ -ing 形 sleeping。"]] },
+      { en: "This word is used / in [[spoken]] language.", cj: ["この単語は使われる", "話し言葉で"], ja: "この単語は話し言葉で使われます。", nt: "spoken language ＝「話される言葉」＝話し言葉。", q: [["spoken", "speaking", "spoke", "speaks", "言葉は「話される」側なので過去分詞 spoken。"]] }
+    ],
+    vocab: [["bench", "ベンチ"], ["remember", "覚えている"], ["wear", "着ている"], ["written", "write の過去分詞"], ["built", "build の過去分詞"], ["hospital", "病院"], ["spoken", "speak の過去分詞"], ["language", "言語・言葉"], ["called ～", "～と呼ばれる"], ["made in ～", "～で作られた"]],
+    content: [],
+    drills: [
+      {
+        name: "どの名詞を説明している？",
+        desc: "色のついた部分が説明している名詞をえらぼう。",
+        qs: [
+          { p: "The boy [[standing by me]] is Eddy.", c: ["boy", "me", "Eddy", "is"], ex: "standing by me が The boy を説明。「私のそばに立っている少年」。" },
+          { p: "The woman [[smiling in a kimono]] in the picture is Taylor.", c: ["woman", "kimono", "picture", "Taylor"], ex: "smiling in a kimono が The woman を説明。" },
+          { p: "There is a movie [[called Live Your Dream]].", c: ["movie", "Dream", "There", "is"], ex: "called ～ が a movie を説明。「～と呼ばれる映画」。" },
+          { p: "This is a picture [[I found on the internet]].", c: ["picture", "internet", "This", "I"], ex: "I found ～ が a picture を説明。" },
+          { p: "He's a leader [[Indian people respect greatly]].", c: ["leader", "people", "He", "Indian"], ex: "Indian people respect greatly が a leader を説明。" },
+          { p: "Gandhi is a man [[who has influenced a lot of people]].", c: ["man", "Gandhi", "people", "lot"], ex: "who ～ が a man を説明。" },
+          { p: "He's still respected by people [[who fight for human rights]].", c: ["people", "He", "rights", "human"], ex: "who fight ～ が people を説明。" },
+          { p: "This is a book [[written by Soseki]].", c: ["book", "Soseki", "This", "is"], ex: "written by Soseki が a book を説明。" },
+          { p: "We have many things [[to study]].", c: ["things", "We", "many", "have"], ex: "to study が many things を説明。「勉強すべきこと」。" },
+          { p: "One thousand people [[in Midori City]] answered.", c: ["people", "thousand", "City", "answered"], ex: "in Midori City が people を説明。" }
+        ]
+      },
+      {
+        name: "日本語 → 英語の順番",
+        desc: "日本語に合う英語をえらぼう。説明は名詞の「後ろ」！",
+        qs: [
+          { p: "私がインターネットで見つけた写真", c: ["a picture I found on the internet", "I found a picture on the internet", "a found picture I on the internet", "on the internet I found a picture"], ex: "名詞 a picture のあとに I found ～。" },
+          { p: "着物を着てほほえんでいる女性", c: ["the woman smiling in a kimono", "the smiling in a kimono woman", "the woman smiled in a kimono", "in a kimono the woman smiling"], ex: "名詞 the woman のあとに smiling ～。" },
+          { p: "インドの人々がとても尊敬している指導者", c: ["a leader Indian people respect greatly", "Indian people respect a leader greatly", "a respect leader Indian people greatly", "a leader respect Indian people greatly"], ex: "名詞 a leader のあとに「主語 Indian people → 動詞 respect」。" },
+          { p: "多くの人々に影響をあたえてきた人", c: ["a man who has influenced a lot of people", "a man which has influenced a lot of people", "a who man has influenced a lot of people", "a lot of people who has influenced a man"], ex: "人なので who。a man のあとに who ～。" },
+          { p: "漱石によって書かれた本", c: ["a book written by Soseki", "a book writing by Soseki", "a written by Soseki book", "Soseki wrote by a book"], ex: "本は「書かれた」→ 過去分詞 written を名詞のうしろに。" },
+          { p: "私のそばに立っている少年", c: ["the boy standing by me", "the boy stood by me", "the standing by me boy", "me standing by the boy"], ex: "少年は「立っている」→ -ing 形を名詞のうしろに。" },
+          { p: "人々を幸せにする映画", c: ["a movie that makes people happy", "a movie who makes people happy", "a movie that people make happy", "people that makes a movie happy"], ex: "もの → that / which。すぐあとに動詞 makes。" },
+          { p: "生徒たちが体育祭のためにデザインしたTシャツ", c: ["a T-shirt that the students designed for Sports Day", "a T-shirt who the students designed for Sports Day", "the students designed a T-shirt that for Sports Day", "a T-shirt that designed the students for Sports Day"], ex: "a T-shirt のあとに that ＋ 主語 the students ＋ 動詞 designed。" },
+          { p: "ベンチの上のあのネコ", c: ["that cat on the bench", "on the bench that cat", "that on the bench cat", "that cat the bench on"], ex: "名詞 that cat のあとに on the bench。" },
+          { p: "勉強すべきたくさんのこと", c: ["many things to study", "to study many things", "many to study things", "many things study to"], ex: "名詞 many things のあとに to study。" }
+        ]
+      },
+      {
+        name: "-ing？ 過去分詞？ who？ which？",
+        desc: "空らんに合うものをえらぼう。",
+        qs: [
+          { p: "Look at the girl ___ under the tree.", c: ["sitting", "sat", "sits", "sit"], ja: "木の下にすわっている少女を見て。", ex: "少女は自分で「すわっている」→ -ing。" },
+          { p: "This is a car ___ in Japan.", c: ["made", "making", "makes", "make"], ja: "これは日本で作られた車です。", ex: "車は「作られた」側 → 過去分詞 made。" },
+          { p: "The language ___ in India is Hindi.", c: ["spoken", "speaking", "speaks", "spoke"], ja: "インドで話されている言語はヒンディー語です。", ex: "言語は「話される」側 → 過去分詞 spoken。" },
+          { p: "The man ___ a bicycle is my uncle.", c: ["riding", "ridden", "rides", "rode"], ja: "自転車に乗っている男性は私のおじです。", ex: "男性が自分で「乗っている」→ -ing。" },
+          { p: "I know a girl ___ can speak three languages.", c: ["who", "which", "what", "where"], ja: "私は3つの言語を話せる少女を知っています。", ex: "人 → who。" },
+          { p: "This is the bus ___ goes to the station.", c: ["which", "who", "what", "where"], ja: "これは駅へ行くバスです。", ex: "もの → which。" },
+          { p: "Taylor was a teacher ___ loved reading books.", c: ["who", "which", "what", "where"], ja: "テイラーは本を読むことが大好きな先生でした。", ex: "人（先生）→ who。" },
+          { p: "This is a photo ___ shows Gandhi's family.", c: ["which", "who", "whose", "where"], ja: "これはガンディーの家族が写っている写真です。", ex: "もの（写真）→ which。" },
+          { p: "Look at that ___ baby.", c: ["sleeping", "slept", "sleeps", "to sleep"], ja: "あの眠っている赤ちゃんを見て。", ex: "1語だけなので名詞の前。「眠っている」→ sleeping。" },
+          { p: "The boy who ___ soccer every day is Jun.", c: ["plays", "play", "playing", "to play"], ja: "毎日サッカーをする少年は純です。", ex: "who のあとの動詞は The boy（1人）に合わせて plays。" },
+          { p: "The students ___ by Taylor became English teachers.", c: ["taught", "teaching", "teach", "teaches"], ja: "テイラーに教えられた生徒たちは英語の先生になった。", ex: "生徒たちは「教えられた」側 → 過去分詞 taught。" },
+          { p: "Do you know the man ___ with Ms. Chen?", c: ["talking", "talked", "talks", "talk"], ja: "チェン先生と話している男性を知っていますか。", ex: "男性が自分で「話している」→ -ing。" }
+        ]
+      }
+    ]
+  }
+  ]
+}
+/* ▼ 次のテストはここに追加：  , { id: "2027-term3-u6", title: "学年末テスト対策", range: "…", lessons: [ … ] }  */
+];
+
+</script>
+<script>
+/* どのテストを表示するか：前回えらんだもの → なければ一番下（最新）のテスト */
+const CURRENT_KEY = "eigo-taisaku-v1:current";
+const TEST = (function () {
+  let id = null;
+  try { id = localStorage.getItem(CURRENT_KEY); } catch (e) { /* ignore */ }
+  return TESTS.find(t => t.id === id) || TESTS[TESTS.length - 1];
+})();
+(function () {
+  "use strict";
+  const APP_VERSION = "1.1";
+  const STORAGE_KEY = "eigo-taisaku-v1:" + TEST.id;
+  const RUN_SIZE = { v: 10, c: 10, s: 10, g: 3, w: 1, k: 8, d: 10 };
+  const LESSONS = TEST.lessons;
+  const LMAP = new Map(LESSONS.map(L => [L.id, L]));
+  const ICON = { u4p1: "📋", u4p2: "🎒", u4rt1: "🌉", u4rt2: "📚", u5p1: "🖼️", u5p2: "🕊️", u5ks: "🔗", gram: "🐈" };
+  const app = document.getElementById("app");
+  const topbar = document.getElementById("topbar");
+
+  /* ---------------- utilities ---------------- */
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const rich = (s, cls) => esc(s || "").replace(/\[\[(.+?)\]\]/g, `<mark class="${cls || "hl"}">$1</mark>`);
+  const plain = s => s.replace(/\[\[|\]\]/g, "").replace(/ \/ /g, " ");
+  const chunksOf = s => s.en.split(" / ");
+  const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+  function findWord(text, word) {
+    const re = new RegExp("(^|[^A-Za-z'-])(" + reEsc(word) + ")(?![A-Za-z])");
+    const m = re.exec(text);
+    if (!m) return null;
+    const start = m.index + m[1].length;
+    return [text.slice(0, start), text.slice(start + word.length)];
+  }
+  function pick3(correct, pool) {
+    const out = [], seen = new Set([correct]);
+    for (const x of shuffle(pool)) { if (!seen.has(x)) { seen.add(x); out.push(x); } if (out.length === 3) break; }
+    return out;
+  }
+  const $ = (sel, root) => (root || document).querySelector(sel);
+  const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+
+  /* ---------------- speech ---------------- */
+  const canSpeak = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  if (!canSpeak) document.documentElement.classList.add("no-speech");
+  function speak(text) {
+    if (!canSpeak) return;
+    try {
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text.replace(/[～〜]/g, "something"));
+      u.lang = "en-US"; u.rate = 0.85;
+      const v = speechSynthesis.getVoices().find(v => /^en[-_]US/i.test(v.lang)) || speechSynthesis.getVoices().find(v => /^en/i.test(v.lang));
+      if (v) u.voice = v;
+      speechSynthesis.speak(u);
+    } catch (e) { /* ignore */ }
+  }
+  const spk = text => `<button type="button" class="speak" data-speak="${esc(text)}" aria-label="発音を聞く">🔊</button>`;
+
+  /* ---------------- storage ---------------- */
+  let state = { cleared: {}, best: {}, mistakes: [], hideJa: false, hideChunks: false, testBest: null };
+  function load() {
+    try { const raw = localStorage.getItem(STORAGE_KEY); if (raw) state = Object.assign(state, JSON.parse(raw)); } catch (e) { /* ignore */ }
+  }
+  function save() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* ignore */ } }
+  function addMistake(key) {
+    state.mistakes = state.mistakes.filter(k => k !== key);
+    state.mistakes.unshift(key);
+    if (state.mistakes.length > 200) state.mistakes.length = 200;
+  }
+  function removeMistake(key) { state.mistakes = state.mistakes.filter(k => k !== key); }
+
+  /* ---------------- items ---------------- */
+  const ALL_VOCAB = LESSONS.flatMap(L => L.vocab);
+  function bodySentences(L) { return L.sentences.map((s, si) => ({ s, si })).filter(x => !x.s.ks); }
+  function groupsOf(L) {
+    const body = bodySentences(L).map(x => x.si);
+    const groups = [];
+    if (L.paras) {
+      let i = 0;
+      for (const n of L.paras) {
+        const para = body.slice(i, i + n); i += n;
+        for (let k = 0; k < para.length;) {
+          const rest = para.length - k;
+          const size = rest <= 3 ? rest : (rest === 4 ? 2 : 3);
+          groups.push(para.slice(k, k + size)); k += size;
+        }
+      }
+    } else {
+      for (let k = 0; k < body.length;) {
+        const rest = body.length - k;
+        const size = rest <= 3 ? rest : (rest === 4 ? 2 : 3);
+        groups.push(body.slice(k, k + size)); k += size;
+      }
+    }
+    return groups.filter(g => g.some(si => L.sentences[si].q.length));
+  }
+  function stepsFor(L) {
+    const st = [{ id: "v", name: "単語", desc: "新しい単語・熟語の意味" }];
+    if (itemsFor(L, "c").length) st.push({ id: "c", name: "かたまりの意味", desc: "英文を「意味のかたまり」ごとに理解" });
+    st.push({ id: "s", name: "1文ずつ", desc: "1つの文の空らんをうめる（日本語つき）" });
+    if (L.passage !== false) {
+      st.push({ id: "g", name: "2〜3文の文章", desc: "短い文章の空らんを順番にうめる" });
+      st.push({ id: "w", name: "本文まるごと", desc: "教科書の本文全体の空らん" });
+    }
+    (L.drills || []).forEach((d, i) => st.push({ id: "d" + i, name: d.name, desc: d.desc }));
+    if (L.content && L.content.length) st.push({ id: "k", name: "内容チェック", desc: "本文の内容を確認" });
+    return st;
+  }
+  const itemCache = new Map();
+  function itemsFor(L, step) {
+    const ck = L.id + "|" + step;
+    if (itemCache.has(ck)) return itemCache.get(ck);
+    let items = [];
+    if (step === "v") items = L.vocab.flatMap((v, i) => [{ key: `v:${L.id}:${i}:e`, kind: "v", L, i, dir: "e" }, { key: `v:${L.id}:${i}:j`, kind: "v", L, i, dir: "j" }]);
+    else if (step === "c") L.sentences.forEach((s, si) => { const ch = chunksOf(s); if (ch.length < 2) return; ch.forEach((c, ci) => items.push({ key: `c:${L.id}:${si}:${ci}`, kind: "c", L, si, ci })); });
+    else if (step === "s") L.sentences.forEach((s, si) => { if (s.q.length) items.push({ key: `s:${L.id}:${si}:0`, kind: "s", L, si, qi: 0 }); });
+    else if (step === "g") items = groupsOf(L).map((sis, gi) => ({ key: `g:${L.id}:${gi}`, kind: "g", L, sis }));
+    else if (step === "w") items = [{ key: `w:${L.id}`, kind: "w", L, sis: bodySentences(L).map(x => x.si) }];
+    else if (step === "k") items = (L.content || []).map((c, i) => ({ key: `k:${L.id}:${i}`, kind: "k", L, i }));
+    else if (/^d\d+$/.test(step)) { const n = +step.slice(1); items = ((L.drills || [])[n] || { qs: [] }).qs.map((q, i) => ({ key: `d:${L.id}:${n}:${i}`, kind: "d", L, n, i })); }
+    items.forEach((it, idx) => { it.idx = idx; });
+    itemCache.set(ck, items);
+    return items;
+  }
+  function itemByKey(key) {
+    const p = key.split(":");
+    const L = LMAP.get(p[1]);
+    if (!L) return null;
+    if (p[0] === "v" && L.vocab[+p[2]]) return { key, kind: "v", L, i: +p[2], dir: p[3] };
+    if (p[0] === "c" && L.sentences[+p[2]]) return { key, kind: "c", L, si: +p[2], ci: +p[3] };
+    if (p[0] === "s" && L.sentences[+p[2]] && L.sentences[+p[2]].q[+p[3]]) return { key, kind: "s", L, si: +p[2], qi: +p[3] };
+    if (p[0] === "k" && L.content[+p[2]]) return { key, kind: "k", L, i: +p[2] };
+    if (p[0] === "d" && L.drills && L.drills[+p[2]] && L.drills[+p[2]].qs[+p[3]]) return { key, kind: "d", L, n: +p[2], i: +p[3] };
+    return null;
+  }
+  function stepProgress(L, step) {
+    const items = itemsFor(L, step);
+    const done = items.filter(it => state.cleared[it.key]).length;
+    return { done, total: items.length };
+  }
+  function lessonProgress(L) {
+    let done = 0, total = 0;
+    for (const st of stepsFor(L)) { const p = stepProgress(L, st.id); done += p.done; total += p.total; }
+    return { done, total };
+  }
+
+  /* ---------------- question builder ---------------- */
+  function sentenceBlank(s, qi) {
+    const q = s.q[qi];
+    const text = plain(s.en);
+    const parts = findWord(text, q[0]) || [text + " ", ""];
+    return { q, text, before: parts[0], after: parts[1] };
+  }
+  function makeQ(it) {
+    const L = it.L;
+    if (it.kind === "v") {
+      const [en, ja] = L.vocab[it.i];
+      const poolSame = L.vocab.map(v => it.dir === "e" ? v[1] : v[0]);
+      const poolAll = ALL_VOCAB.map(v => it.dir === "e" ? v[1] : v[0]);
+      const correct = it.dir === "e" ? ja : en;
+      let wrong = pick3(correct, poolSame);
+      if (wrong.length < 3) wrong = wrong.concat(pick3(correct, poolAll.filter(x => !wrong.includes(x)))).slice(0, 3);
+      return {
+        label: it.dir === "e" ? "単語の意味は？" : "英語でいうと？",
+        prompt: it.dir === "e" ? `<span lang="en">${esc(en)}</span>` : esc(ja),
+        promptJa: it.dir !== "e",
+        say: en,
+        correct, choices: shuffle([correct, ...wrong]), choiceEn: it.dir !== "e",
+        ex: `<span lang="en"><b>${esc(en)}</b></span> ＝ ${esc(ja)}`
+      };
+    }
+    if (it.kind === "c") {
+      const s = L.sentences[it.si];
+      const ch = chunksOf(s);
+      const correct = s.cj[it.ci];
+      const others = [];
+      L.sentences.forEach((t, ti) => { if (ti !== it.si) t.cj.forEach(x => others.push(x)); });
+      let wrong = pick3(correct, others);
+      if (wrong.length < 3) wrong = wrong.concat(pick3(correct, s.cj.filter(x => !wrong.includes(x)))).slice(0, 3);
+      const html = ch.map((c, ci) => ci === it.ci ? `<span class="target">${esc(plain(c))}</span>` : esc(plain(c))).join(" ");
+      return {
+        label: "色のついた部分の意味は？",
+        prompt: `<span lang="en">${html}</span>`,
+        say: plain(s.en),
+        correct, choices: shuffle([correct, ...wrong]),
+        ex: `<span lang="en"><b>${esc(plain(ch[it.ci]))}</b></span> ＝ ${esc(correct)}`,
+        full: chunkStrip(s), ja: s.ja
+      };
+    }
+    if (it.kind === "s") {
+      const s = L.sentences[it.si];
+      const b = sentenceBlank(s, it.qi);
+      const correct = b.q[0];
+      return {
+        label: "空らんに入るのは？",
+        prompt: `<span lang="en">${esc(b.before)}<span class="blank" id="qblank">　</span>${esc(b.after)}</span>`,
+        sub: esc(s.ja),
+        say: b.text,
+        blank: true,
+        correct, choices: shuffle(b.q.slice(0, 4)), choiceEn: true,
+        ex: rich(b.q[4] || s.nt),
+        source: `${L.unit} ${L.part}`
+      };
+    }
+    if (it.kind === "k") {
+      const c = L.content[it.i];
+      return {
+        label: "内容チェック",
+        prompt: esc(c.q), promptJa: !/^[A-Za-z]/.test(c.q),
+        correct: c.c[0], choices: shuffle(c.c), choiceEn: /^[A-Za-z]/.test(c.c[0]),
+        ex: c.ex ? `本文：<span lang="en">${esc(c.ex)}</span>` : ""
+      };
+    }
+    if (it.kind === "d") {
+      const d = L.drills[it.n], q = d.qs[it.i];
+      const html = esc(q.p).replace(/\[\[(.+?)\]\]/g, '<span class="target">$1</span>').replace(/___/g, '<span class="blank" id="qblank">　</span>');
+      const isJa = /[ぁ-んァ-ン一-龥]/.test(q.p);
+      return {
+        label: d.name,
+        prompt: isJa ? html : `<span lang="en">${html}</span>`, promptJa: isJa,
+        sub: q.ja ? esc(q.ja) : "",
+        blank: /___/.test(q.p),
+        correct: q.c[0], choices: shuffle(q.c), choiceEn: true,
+        long: q.c.some(x => x.length > 22),
+        ex: rich(q.ex),
+        say: isJa ? q.c[0] : q.p.replace(/\[\[|\]\]/g, "").replace("___", q.c[0])
+      };
+    }
+    return null;
+  }
+
+  /* ---------------- diagrams ---------------- */
+  function diagMd(d) {
+    return `<div class="diag"><p class="diag-label">英語は「名詞 ← 説明」（説明は後ろ）</p>
+      <div class="md-line" lang="en">${esc(d.before)}<span class="md"><span class="md-n">${esc(d.n)}</span><span class="md-m">${esc(d.m)}</span></span>${esc(d.after)}</div>
+      <p class="diag-label" style="margin-top:6px">日本語は「説明 → 名詞」（説明は前）</p>
+      <div class="md-ja"><span class="mj">${esc(d.mj)}</span><span class="arr">→</span><span class="nj">${esc(d.nj)}</span></div></div>`;
+  }
+  function tokRow(toks) { return `<div class="tok-row" lang="en">${toks.map(([t, r]) => `<span class="tok ${r}">${esc(t)}</span>`).join("")}</div>`; }
+  function diagIq(d) {
+    return `<div class="diag"><p class="diag-label">ふつうの疑問文</p>${tokRow(d.from)}<p class="iq-ja">${esc(d.fj)}</p>
+      <p class="iq-arrow">⬇ 文の中に入れると「疑問詞 → 主語 → 動詞」の順になる</p>${tokRow(d.to)}<p class="iq-ja">${esc(d.tj)}</p>
+      <div class="legend"><span class="w">疑問詞</span><span class="s">主語</span><span class="v">動詞</span></div></div>`;
+  }
+  function diagSlot(d) {
+    return `<div class="diag"><div class="slots">${d.parts.map(([e, j, r]) => `<div class="slot ${r}"><span class="se">${esc(e)}</span><span class="sj">${esc(j)}</span></div>`).join("")}</div></div>`;
+  }
+  function diagRel(d) {
+    const pi = d.obj ? 1 : 0;
+    const b = d.b.map((x, i) => i === pi ? `<span class="rel-pron">${esc(x)}</span>` : esc(x)).join("");
+    return `<div class="diag">
+      <p class="rel-step">① 2つの文</p>
+      <div class="rel-row">${esc(d.a[0])}<span class="rel-noun">${esc(d.a[1])}</span>${esc(d.a[2])}</div>
+      <div class="rel-row">${b}</div>
+      <p class="rel-step">② <span class="rel-pron">${esc(d.b[pi])}</span> を <span class="rel-rp">${esc(d.c[2])}</span> にかえて、${d.obj ? "名詞のすぐ後ろに出す" : "名詞のすぐ後ろにつなぐ"}</p>
+      <div class="rel-row">${esc(d.c[0])}<span class="rel-noun">${esc(d.c[1])}</span> <span class="rel-mod"><span class="rel-rp">${esc(d.c[2])}</span>${esc(d.c[3])}</span></div>
+      <div class="md-ja" style="margin-top:6px"><span class="mj">${esc(d.mj)}</span><span class="arr">→</span><span class="nj">${esc(d.nj)}</span></div></div>`;
+  }
+  function diagSame(d) {
+    return `<div class="diag">${d.title ? `<p class="diag-label">${esc(d.title)}</p>` : ""}<ul class="same-rows">${d.rows.map(r => `<li>${rich(r)}</li>`).join("")}</ul></div>`;
+  }
+  function renderDiag(d) {
+    return ({ md: diagMd, iq: diagIq, slot: diagSlot, rel: diagRel, same: diagSame }[d.type] || (() => ""))(d);
+  }
+  function chunkStrip(s) {
+    return `<div class="chunks">${chunksOf(s).map((c, i) => `<div class="chunk"><span class="ce" lang="en">${rich(c)}</span><span class="cj">${esc(s.cj[i] || "")}</span></div>`).join("")}</div>`;
+  }
+
+  /* ---------------- figures ---------------- */
+  const FIG = {
+    survey() {
+      const rows = [["I know where the local shelter is.", "避難所の場所", 27], ["I know how much food and water I should store.", "たくわえる食料と水の量", 22], ["I know what number I should call in case of a fire.", "火事のときに電話する番号", 53], ["I know how to use a fire extinguisher.", "消火器の使い方", 44]];
+      return `<div class="card fig survey"><p class="fig-title">📊 アンケート結果：「知っている」と答えた人の割合</p>
+        ${rows.map(([en, ja, v], i) => { const cls = v === 53 ? "max" : v === 22 ? "min" : ""; return `<div class="q"><div class="qt">${i + 1}. ${esc(ja)}${cls ? `<span class="tag ${cls}">${cls === "max" ? "いちばん多い" : "いちばん少ない"}</span>` : ""}<small>${esc(en)}</small></div>
+          <div class="qbar"><div class="track"><div class="fill ${cls}" style="width:${v}%"></div></div><b>${v}%</b></div></div>`; }).join("")}
+        <p class="small muted" style="margin:0">※ 緑市に住む、ほかの国から来た1000人が回答（One thousand people in Midori City from other countries answered.）</p></div>`;
+    },
+    kit() {
+      return `<div class="card fig"><p class="fig-title">🗺️ 会話の流れ</p><div class="flowchart">
+        <div class="fc-box key"><span class="fc-who">エディ</span>災害に備えて、君の家族が何をしてきたか教えて。<span class="fc-en">Riko, tell me what your family has done to prepare for a disaster.</span></div>
+        <div class="fc-arrow">⬇</div>
+        <div class="fc-2"><div class="fc-box good"><span class="fc-who">理子の家族</span>✅ 非常用持ち出し袋を<b>作ってある</b><span class="fc-en">We've made an emergency kit.</span></div>
+        <div class="fc-box bad"><span class="fc-who">エディの家族</span>❌ <b>まだ作っていない</b><span class="fc-en">my family hasn't made one yet.</span></div></div>
+        <div class="fc-arrow">⬇ <small>なぜ？</small></div>
+        <div class="fc-box bad"><span class="fc-who">エディ</span>災害についての日本語の情報を理解するのが難しい。<span class="fc-en">It's hard for us to understand the Japanese information about disasters.</span></div>
+        <div class="fc-arrow">⬇ <small>そこで</small></div>
+        <div class="fc-box idea"><span class="fc-who">理子</span>💡 何を準備すべきか<b>英語でわかるリンク</b>を送るよ。<span class="fc-en">I can send you a link. It shows you what you should prepare in English.</span></div>
+        <div class="fc-arrow">⬇ <small>ところで（By the way）</small></div>
+        <div class="fc-box key"><span class="fc-who">理子 → エディ</span>🎬 父がすすめた<b>地震の映画</b>、いっしょに見ない？ ―― もちろん！<span class="fc-en">Why don't we watch it together? — Sure.</span></div>
+        <p class="small muted" style="margin:8px 0 0">→ この映画が、次の Read and Think 1 のテイラーさんの物語です。</p>
+        </div></div>
+        <div class="card fig" style="margin-top:12px"><p class="fig-title">🎒 emergency kit（非常用持ち出し袋）に入れるものの例</p>
+        <div class="slots"><div class="slot o"><span class="se">💧</span><span class="sj">水</span></div><div class="slot o"><span class="se">🥫</span><span class="sj">食料</span></div><div class="slot o"><span class="se">🔦</span><span class="sj">ライト</span></div><div class="slot o"><span class="se">📻</span><span class="sj">ラジオ</span></div><div class="slot o"><span class="se">🩹</span><span class="sj">救急用品</span></div><div class="slot o"><span class="se">🔋</span><span class="sj">電池</span></div></div>
+        <p class="small muted" style="margin:8px 0 0">（中身は教科書には書かれていません。イメージ用の例です）</p></div>`;
+    },
+    taylor1() {
+      return `<div class="card fig"><p class="fig-title">🌉 テイラーさんの夢：a bridge between Japan and America</p>
+        <div class="bridge"><span class="land">アメリカ</span><svg viewBox="0 0 150 46" aria-hidden="true"><path d="M2 34 Q75 -6 148 34" fill="none" stroke="#1E5AA8" stroke-width="4"/><line x1="2" y1="34" x2="148" y2="34" stroke="#1E5AA8" stroke-width="4"/><g stroke="#1E5AA8" stroke-width="2"><line x1="30" y1="34" x2="30" y2="20"/><line x1="55" y1="34" x2="55" y2="12"/><line x1="75" y1="34" x2="75" y2="10"/><line x1="95" y1="34" x2="95" y2="12"/><line x1="120" y1="34" x2="120" y2="20"/></g><path d="M0 42 Q20 38 40 42 T80 42 T120 42 T150 42" fill="none" stroke="#86AACD" stroke-width="2"/></svg><span class="land">日本</span></div>
+        <p class="small muted" style="margin:0 0 12px;text-align:center">2つの国をつなぐ人 ＝ かけ橋（bridge）</p>
+        <ol class="timeline">
+          <li><span class="when">小さいころ（アメリカ）</span><span class="what">日本語を学び始め、日本が好きになる</span><span class="en">Taylor started to learn Japanese as a small girl in America and became attracted to Japan.</span></li>
+          <li><span class="when">2008年</span><span class="what">石巻へ。ALT（外国語指導助手）として働く</span><span class="en">she came to Ishinomaki to work as an ALT.</span></li>
+          <li><span class="when">先生として</span><span class="what">元気で親切。いつも生徒をはげます → 生徒が英語や外国の文化に興味をもつ</span><span class="en">thanks to her bright personality</span></li>
+          <li class="dark"><span class="when">2011年3月11日</span><span class="what">東日本大震災。約2万人が亡くなる</span><span class="en">About 20,000 people lost their lives ...</span></li>
+          <li class="warm"><span class="when">地震のとき（学校で）</span><span class="what">生徒を落ち着かせ、近くの安全な場所へ連れて行く</span><span class="en">Taylor comforted the students and took them to a nearby safe place.</span></li>
+        </ol><p class="small muted" style="margin:0">→ このあとの話は「テイラーさんの物語②」へ</p></div>`;
+    },
+    taylor2() {
+      return `<div class="card fig"><p class="fig-title">🕰️ そのあと何があった？</p><ol class="timeline">
+          <li class="dark"><span class="when">地震のあと</span><span class="what">自転車でアパートへ → とちゅうで津波に巻きこまれる</span><span class="en">was caught in the tsunami on her way</span></li>
+          <li class="dark"><span class="when">24歳</span><span class="what">亡くなる。家族は突然の知らせにショックを受ける</span><span class="en">She died at the age of twenty-four.</span></li>
+          <li class="warm"><span class="when">地震のすぐあと</span><span class="what">📚 両親と友人が石巻の学校に「テイラー文庫」を作る<br>🤝 生徒の交流プログラムも始める</span><span class="en">Taylor Reading Corner / student exchange programs</span></li>
+          <li><span class="when">それはなぜ？</span><span class="what">テイラーは本が大好き＆人々を結びつけたかったから</span><span class="en">she always wanted to bring people together</span></li>
+          <li class="warm"><span class="when">生徒たちは</span><span class="what">英語の勉強を続け、英語の先生になった人もいる</span><span class="en">kept on studying English</span></li>
+          <li class="warm"><span class="when">今</span><span class="what">テイラーはもういないが、夢は多くの人の心の中で生き続けている</span><span class="en">her dream lives on in the hearts of many people</span></li>
+        </ol></div>
+        <div class="card fig" style="margin-top:12px"><p class="fig-title">✍️ 筆者のメッセージ（段落6）</p>
+        <div class="fc-box key">日本には毎年たくさんの外国の人が住みに来る。<br>→ みんなが<b>災害に備え</b>、<b>協力する</b>ことが大切。</div>
+        <div class="fc-arrow">⬇</div>
+        <div class="fc-2"><div class="fc-box good"><span class="fc-who">ふだん</span>in ordinary times</div><div class="fc-box bad"><span class="fc-who">危機のとき</span>in times of crisis</div></div>
+        <div class="fc-arrow">⬇ <small>both A and B（AもBも）</small></div>
+        <div class="fc-box idea">🤝 おたがいに支え合うことが必要<span class="fc-en">It is necessary for us to support each other.</span></div></div>`;
+    },
+    gandhi1() {
+      return `<div class="card fig"><p class="fig-title">🪪 ガンディーのプロフィール</p><div class="profile">
+        <svg viewBox="0 0 170 92" role="img" aria-label="紙幣のイメージ"><rect x="2" y="2" width="166" height="88" rx="8" fill="#F3EBD9" stroke="#A88C5A" stroke-width="2"/><rect x="10" y="10" width="150" height="72" rx="5" fill="none" stroke="#C9B48A" stroke-dasharray="4 3"/><circle cx="122" cy="46" r="26" fill="#E6D8B8" stroke="#A88C5A" stroke-width="2"/><text x="122" y="51" text-anchor="middle" font-size="13" fill="#6B5530">肖像</text><text x="22" y="40" font-size="24" fill="#6B5530" font-weight="700">₹</text><text x="22" y="64" font-size="11" fill="#6B5530">rupee note</text></svg>
+        <dl><dt>名前</dt><dd>マハトマ・ガンディー（Mahatma Gandhi）</dd><dt>紙幣</dt><dd>インドのすべてのルピー紙幣に肖像が印刷されている</dd><dt>生まれた日</dt><dd>1869年10月2日</dd><dt>その日は今</dt><dd>インドの祝日 ＆ 国際非暴力デー</dd><dt>インドの人は</dt><dd>とても尊敬している指導者</dd></dl></div></div>`;
+    },
+    gandhi2() {
+      return `<div class="card fig"><p class="fig-title">🕊️ ガンディーはどうやって独立をめざした？</p><div class="flowchart">
+        <div class="fc-box key"><span class="fc-who">目標</span>インドの独立<span class="fc-en">He worked for Indian independence.</span></div>
+        <div class="fc-arrow">⬇ <small>どうやって？（how he did it）</small></div>
+        <div class="fc-2"><div class="fc-box idea"><span class="fc-who">方法①</span>非暴力：決して暴力を使わない<span class="fc-en">He never used violence.</span></div>
+        <div class="fc-box idea"><span class="fc-who">方法②</span>断食で抗議：ほとんど・全く食べない<span class="fc-en">he also went on fasts to protest</span></div></div>
+        <div class="fc-arrow">⬇ <small>その結果</small></div>
+        <div class="fc-box good"><span class="fc-who">今でも</span>世界中の多くの人に影響。人権のために戦う人々から尊敬されている<span class="fc-en">he's still respected by people who fight for human rights</span></div>
+        <div class="fc-arrow">💬</div>
+        <div class="fc-box"><span class="fc-who">純の感想</span>「断食」って…大変そう！<span class="fc-en">Wow. That sounds tough.</span></div></div></div>`;
+    },
+    rel() {
+      return `<div class="card fig"><p class="fig-title">🔗 who / which / that の使い分け</p>
+        <div class="fc-2"><div class="fc-box key"><span class="fc-who">説明する名詞が「人」</span><b lang="en">who</b>（that でもOK）<span class="fc-en">a man who has influenced ～</span></div>
+        <div class="fc-box idea"><span class="fc-who">説明する名詞が「もの」</span><b lang="en">which</b>（that でもOK）<span class="fc-en">a photo which shows ～</span></div></div>
+        <p class="fig-title" style="margin-top:14px">うしろの形は2種類</p>
+        <div class="diag"><p class="diag-label">KS 17：that のすぐあとに動詞（主格）→ 省略できない</p>${tokRow([["a movie", "o"], ["that", "w"], ["makes", "v"], ["people happy", "o"]])}</div>
+        <div class="diag"><p class="diag-label">KS 18：that のあとに「主語＋動詞」（目的格）→ 省略できる</p>${tokRow([["a picture", "o"], ["(that)", "w"], ["I", "s"], ["found", "v"], ["on the internet", "o"]])}</div>
+        <div class="legend"><span class="w">関係代名詞</span><span class="s">主語</span><span class="v">動詞</span></div></div>`;
+    },
+    six() {
+      const six = [["① 前置詞＋語句", "That cat on the bench"], ["② to＋動詞（不定詞）", "many things to study"], ["③ -ing（～している）", "the boy standing by me"], ["④ 過去分詞（～された）", "a book written by Soseki"], ["⑤ 主語＋動詞", "a picture my father took"], ["⑥ who / which / that", "the bus which goes to the hospital"]];
+      return `<div class="card fig"><p class="fig-title">🐈 日本語と英語は説明の場所が逆</p>
+        <div class="order"><span class="lab">日本語</span><div class="md-ja"><span class="mj">ベンチの上の</span><span class="arr">→</span><span class="nj">ネコ</span></div>
+        <span class="lab">英語</span><div class="md-line" lang="en"><span class="md"><span class="md-n">cat</span><span class="md-m">on the bench</span></span></div></div>
+        <p class="fig-title">名詞の後ろにつける説明 6種類</p>
+        <div class="six">${six.map(([t, e]) => `<div><b>${esc(t)}</b><span class="ex">${esc(e)}</span></div>`).join("")}</div></div>`;
+    }
+  };
+
+  /* ---------------- top bar ---------------- */
+  function setTop(o) {
+    topbar.innerHTML = `<div class="topbar-in">${o.back ? `<button type="button" class="back" data-go="${esc(o.back)}">← もどる</button>` : ""}
+      <p class="topbar-title">${o.title}${o.sub ? `<small>${o.sub}</small>` : ""}</p>${o.right ? `<span class="topbar-count" id="topCount">${o.right}</span>` : ""}</div>`;
+  }
+
+  /* ---------------- home ---------------- */
+  function renderHome() {
+    setTop({ title: "📝 " + esc(TEST.title), sub: "英語 定期テスト対策" });
+    let D = 0, T = 0;
+    const cards = LESSONS.map(L => {
+      const p = lessonProgress(L); D += p.done; T += p.total;
+      const mini = stepsFor(L).map(st => { const sp = stepProgress(L, st.id); return `<i class="${sp.done >= sp.total && sp.total ? "done" : sp.done ? "part" : ""}" title="${esc(st.name)}"></i>`; }).join("");
+      return `<div class="card lesson"><div class="lesson-top"><div class="lesson-icon" aria-hidden="true">${L.icon || ICON[L.id] || "📘"}</div>
+        <div><p class="lesson-name">${esc(L.title)}</p><p class="lesson-sub">${esc(L.unit)} ${esc(L.part)}　${esc(L.page)}</p></div></div>
+        <div class="steps-mini" aria-label="練習の進み具合">${mini}</div>
+        <div class="row"><a class="btn sub" href="#/l/${L.id}">📖 解説を読む</a><a class="btn" href="#/l/${L.id}/p">✏️ 練習する</a></div></div>`;
+    }).join("");
+    const pct = T ? Math.round(D / T * 100) : 0;
+    const switcher = TESTS.length > 1 ? `<div class="card switcher"><b>テストを切りかえる</b><div class="row">${TESTS.slice().reverse().map(t => `<button type="button" class="btn ${t.id === TEST.id ? "" : "sub"}" data-test="${esc(t.id)}"${t.id === TEST.id ? ' aria-current="true"' : ""}>${esc(t.title)}</button>`).join("")}</div></div>` : "";
+    app.innerHTML = `<div class="wrap">${lineBanner()}<p style="margin:0 0 8px"><a class="back" href="./" style="text-decoration:none;display:inline-block">← 文法ドリルにもどる</a></p>${switcher}
+      <section class="hero"><h1>テスト範囲を まるごと対策</h1><p class="range">${esc(TEST.range)}</p>
+      <div class="card total"><div style="display:flex;justify-content:space-between;align-items:baseline"><b>ぜんたいの進み具合</b><span><b style="font-size:1.3rem">${pct}</b>%</span></div><div class="bar" style="margin-top:6px"><i style="width:${pct}%"></i></div>
+      <div class="flow"><em>進め方：</em><span>📖 解説</span><em>→</em><span>単語</span><em>→</em><span>かたまり</span><em>→</em><span>1文</span><em>→</em><span>2〜3文</span><em>→</em><span>本文</span><em>→</em><span>内容</span><em>→</em><span>🏁 総まとめ</span></div></div></section>
+      <div class="lessons">${cards}</div>
+      <div class="extra"><div class="card"><h2>🏁 総まとめテスト</h2><p class="small muted">全部の単元から20問。100点をめざそう！${state.testBest != null ? `<br>これまでの最高：<b>${state.testBest}点</b>` : ""}</p><a class="btn accent" href="#/test">テストを始める</a></div>
+      <div class="card"><h2>🔁 まちがえた問題</h2><p class="small muted">いま <b>${state.mistakes.length}</b> 問。正解すると消えます。</p><a class="btn sub${state.mistakes.length ? "" : " off"}" href="#/review" ${state.mistakes.length ? "" : 'aria-disabled="true"'}>復習する</a></div></div>
+    </div>`;
+  }
+
+  /* ---------------- lesson: explanation ---------------- */
+  function renderLesson(L, tab) {
+    setTop({ back: "#/", title: esc(L.title), sub: `${esc(L.unit)} ${esc(L.part)}　${esc(L.page)}` });
+    const tabs = `<div class="tabs" role="tablist"><button role="tab" aria-selected="${tab === "read"}" data-go="#/l/${L.id}">📖 解説</button><button role="tab" aria-selected="${tab === "practice"}" data-go="#/l/${L.id}/p">✏️ 練習</button></div>`;
+    app.innerHTML = `<div class="wrap">${tabs}<div id="tabBody"></div></div>`;
+    const body = $("#tabBody");
+    if (tab === "practice") { body.innerHTML = practiceMenu(L); return; }
+    body.innerHTML = explanation(L);
+    body.classList.toggle("hide-ja", state.hideJa);
+    body.classList.toggle("hide-chunks", state.hideChunks);
+  }
+  function explanation(L) {
+    let n = 0;
+    const secNum = () => `<span class="num">${++n}</span>`;
+    let html = `<div class="section" style="margin-top:16px"><div class="card"><div class="scene"><span class="emoji" aria-hidden="true">${L.icon || ICON[L.id] || "📘"}</span><p>${esc(L.scene)}</p></div>
+      ${L.question ? `<div class="tq">❓ <b lang="en">${esc(L.question[0])}</b><br>${esc(L.question[1])}</div>` : ""}</div></div>`;
+    html += `<div class="section"><h2 class="section-head">${secNum()}まずはざっくり内容をつかもう</h2><div class="card"><ul class="summary">${L.summary.map(s => `<li>${rich(s)}</li>`).join("")}</ul></div>
+      ${L.figHtml ? `<div class="card fig" style="margin-top:12px">${L.figHtml}</div>` : FIG[L.fig] ? `<div style="margin-top:12px">${FIG[L.fig]()}</div>` : ""}</div>`;
+    html += `<div class="section"><h2 class="section-head">${secNum()}文法のポイント</h2><div class="stack">${L.grammar.map(g => `<div class="card gcard"><h3>${esc(g.t)}</h3><p class="point">${rich(g.p)}</p>${(g.d || []).map(renderDiag).join("")}${g.tips && g.tips.length ? `<ul>${g.tips.map(t => `<li>${rich(t)}</li>`).join("")}</ul>` : ""}</div>`).join("")}</div></div>`;
+
+    // sentence by sentence
+    const toggles = `<div class="toggles"><button type="button" class="toggle" data-toggle="chunks" aria-pressed="${!state.hideChunks}">かたまり表示</button><button type="button" class="toggle" data-toggle="ja" aria-pressed="${state.hideJa}">日本語をかくす（タップで表示）</button></div>`;
+    let cards = "", pi = 0, inPara = 0, ksStarted = false, no = 0;
+    const paraLabel = L.paras ? (i => `段落 ${L.paraStart + i}`) : null;
+    L.sentences.forEach((s, si) => {
+      if (s.ks && !ksStarted) { ksStarted = true; cards += `<p class="para-label">📌 教科書の Key Sentence・Practice の文</p>`; }
+      if (!s.ks && paraLabel) { if (inPara === 0) cards += `<p class="para-label">${paraLabel(pi)}</p>`; inPara++; if (inPara === L.paras[pi]) { pi++; inPara = 0; } }
+      no++;
+      const md = s.md ? diagMd({ before: s.md[0], n: s.md[1], m: s.md[2], after: s.md[3], nj: s.md[4], mj: s.md[5] }) : "";
+      cards += `<div class="card sent"><div class="sent-head"><span class="sent-no">${no}</span>${s.sp ? `<span class="sent-sp">${esc(s.sp)}</span>` : ""}${s.ks ? `<span class="chip accent">${esc(s.ks)}</span>` : ""}</div>
+        <div class="sent-top"><p class="sent-en" lang="en">${rich(plain(s.en).length ? s.en.replace(/ \/ /g, " ") : "")}</p>${spk(plain(s.en))}</div>
+        ${chunkStrip(s)}<p class="sent-ja"><span class="jaw">${esc(s.ja)}</span></p>${s.nt ? `<p class="sent-nt">💡 ${rich(s.nt)}</p>` : ""}${md}</div>`;
+    });
+    html += `<div class="section"><h2 class="section-head">${secNum()}1文ずつ読もう</h2><p class="small muted" style="margin:0 0 8px">英文を「意味のかたまり」に分けて、前から順番に意味をとろう。🔊で発音も聞けます。</p>${toggles}<div class="stack" style="margin-top:12px">${cards}</div></div>`;
+
+    // through-reading
+    if (L.passage !== false) {
+      html += `<div class="section"><h2 class="section-head">${secNum()}通して読もう</h2><div class="card passage-read">${throughText(L)}</div></div>`;
+    }
+    html += `<div class="section"><h2 class="section-head">${secNum()}単語・熟語</h2><div class="card"><table class="vocab">${L.vocab.map(([e, j]) => `<tr><td lang="en">${esc(e)}</td><td>${esc(j)}</td><td>${spk(e)}</td></tr>`).join("")}</table></div></div>`;
+    html += `<div class="section"><a class="btn block" href="#/l/${L.id}/p">✏️ この単元の練習へ進む</a></div>`;
+    return html;
+  }
+  function throughText(L) {
+    const body = bodySentences(L);
+    let out = "", i = 0;
+    if (L.paras) {
+      L.paras.forEach((n, p) => {
+        const part = body.slice(i, i + n); i += n;
+        out += `<p class="para-label" style="margin-top:${p ? 14 : 0}px">段落 ${L.paraStart + p}</p><p><span class="pen" lang="en">${part.map(x => esc(plain(x.s.en))).join(" ")}</span><span class="pja jaw" style="display:block">${part.map(x => esc(x.s.ja)).join("")}</span></p>`;
+      });
+      return out;
+    }
+    // dialog or plain list: merge consecutive lines by same speaker
+    const lines = [];
+    body.forEach(x => { const last = lines[lines.length - 1]; if (last && x.s.sp && last.sp === x.s.sp) last.items.push(x.s); else lines.push({ sp: x.s.sp, items: [x.s] }); });
+    return lines.map(l => `<p>${l.sp ? `<span class="line-sp">${esc(l.sp)}:</span>` : ""}<span class="pen" lang="en">${l.items.map(s => esc(plain(s.en))).join(" ")}</span><span class="pja jaw" style="display:block">${l.items.map(s => esc(s.ja)).join("")}</span></p>`).join("");
+  }
+
+  /* ---------------- lesson: practice menu ---------------- */
+  function practiceMenu(L) {
+    const steps = stepsFor(L);
+    return `<p class="small muted" style="margin:14px 0 10px">上から順番がおすすめ。1回10問くらい。一発で正解した問題が「クリア」になります。</p><div class="steplist">${steps.map((st, i) => {
+      const p = stepProgress(L, st.id); const pct = p.total ? Math.round(p.done / p.total * 100) : 0;
+      const best = state.best[L.id + "|" + st.id];
+      return `<div class="card step${p.done >= p.total ? " done" : ""}"><div class="step-no">${p.done >= p.total ? "✓" : i + 1}</div>
+        <div><p class="step-name">${esc(st.name)}</p><p class="step-desc">${esc(st.desc)}<br>クリア ${p.done} / ${p.total}${best != null ? `　最高 ${best}%` : ""}</p><div class="bar"><i style="width:${pct}%"></i></div></div>
+        <a class="btn" href="#/play/${L.id}/${st.id}">${p.done ? "つづける" : "スタート"}</a></div>`;
+    }).join("")}</div>
+    <div class="section"><a class="btn sub block" href="#/l/${L.id}">📖 解説にもどる</a></div>`;
+  }
+
+  /* ---------------- play engine ---------------- */
+  let run = null;
+  function pickRun(items, n, ordered) {
+    const un = items.filter(it => !state.cleared[it.key]);
+    const cl = items.filter(it => state.cleared[it.key]);
+    let sel = shuffle(un).slice(0, n);
+    if (sel.length < n) sel = sel.concat(shuffle(cl).slice(0, n - sel.length));
+    if (ordered) sel.sort((a, b) => a.idx - b.idx);
+    return sel;
+  }
+  function startRun(mode, L, step) {
+    let items, title, back, sub;
+    if (mode === "lesson") {
+      const st = stepsFor(L).find(s => s.id === step);
+      if (!st) { location.hash = "#/l/" + L.id + "/p"; return; }
+      const all = itemsFor(L, step);
+      const size = RUN_SIZE[step[0] === "d" ? "d" : step] || 10;
+      items = pickRun(all, size, step === "c" || step === "s" || step === "g");
+      title = st.name; sub = `${L.title}（${L.unit} ${L.part}）`; back = `#/l/${L.id}/p`;
+    } else if (mode === "review") {
+      items = state.mistakes.map(itemByKey).filter(Boolean).slice(0, 10);
+      title = "まちがえた問題の復習"; back = "#/";
+    } else if (mode === "test") {
+      items = buildTest(); title = "総まとめテスト"; back = "#/";
+    }
+    if (!items || !items.length) { location.hash = back || "#/"; return; }
+    run = { mode, L, step, title, sub, back, queue: items.slice(), total: items.length, answered: 0, firstOk: 0, retried: new Set(), wrongLessons: {}, blanksTotal: 0, blanksOk: 0 };
+    if (step === "g" || step === "w") { run.passages = items; run.pIndex = 0; startPassage(); }
+    else nextQ();
+  }
+  function buildTest() {
+    const pools = { v: [], s: [], k: [], d: [] };
+    for (const L of LESSONS) {
+      pools.v.push(...itemsFor(L, "v"));
+      L.sentences.forEach((s, si) => s.q.forEach((q, qi) => pools.s.push({ key: `s:${L.id}:${si}:${qi}`, kind: "s", L, si, qi })));
+      pools.k.push(...itemsFor(L, "k"));
+      (L.drills || []).forEach((d, n) => pools.d.push(...itemsFor(L, "d" + n)));
+    }
+    return shuffle([].concat(shuffle(pools.v).slice(0, 5), shuffle(pools.s).slice(0, 7), shuffle(pools.k).slice(0, 4), shuffle(pools.d).slice(0, 4)));
+  }
+
+  /* ----- single question ----- */
+  function nextQ() {
+    if (!run.queue.length) return showResult();
+    const it = run.queue.shift();
+    const q = makeQ(it);
+    run.cur = { it, q, answered: false, retry: run.retried.has(it.key) };
+    setTop({ back: run.back, title: esc(run.title), sub: run.sub ? esc(run.sub) : "", right: `<b>${Math.min(run.answered + 1, run.total)}</b> / ${run.total}` });
+    const longChoices = q.long || q.choices.some(c => c.length > 16);
+    app.innerHTML = `<div class="wrap play"><div class="card qcard">
+      <p class="qkind">${esc(q.label)}${run.cur.retry ? '　<span class="chip gray">もう一度</span>' : ""}${q.source && run.mode !== "lesson" ? `　<span class="chip gray">${esc(q.source)}</span>` : ""}</p>
+      <div class="qtop"><p class="qprompt${q.promptJa ? " ja-prompt" : ""}">${q.prompt}</p>${q.say && !q.promptJa ? spk(q.say) : ""}</div>
+      ${q.sub ? `<p class="qsub">${q.sub}</p>` : ""}</div>
+      <div class="choices${longChoices ? " long" : ""}" id="choices">${q.choices.map((c, i) => `<button type="button" class="choice" data-choice="${i}"><span class="k">${i + 1}</span><span class="t"${q.choiceEn ? ' lang="en"' : ""}>${esc(c)}</span></button>`).join("")}</div>
+      <div id="fb"></div></div>`;
+    window.scrollTo(0, 0);
+  }
+  function answerQ(i) {
+    const cur = run.cur; if (!cur || cur.answered) return;
+    cur.answered = true;
+    const q = cur.q, it = cur.it;
+    const choice = q.choices[i];
+    const ok = choice === q.correct;
+    $$(".choice").forEach((b, bi) => {
+      b.disabled = true;
+      if (q.choices[bi] === q.correct) b.classList.add("is-ok");
+      else if (bi === i) b.classList.add("is-ng");
+      else b.classList.add("dim");
+    });
+    const bl = $("#qblank");
+    if (bl) { bl.textContent = q.correct; bl.classList.add(ok ? "ok" : "ng"); }
+    if (!cur.retry) {
+      run.answered++;
+      if (ok) run.firstOk++;
+    }
+    if (ok) {
+      if (!cur.retry && run.mode === "lesson") state.cleared[it.key] = true;
+      if (run.mode === "review") removeMistake(it.key);
+    } else {
+      addMistake(it.key);
+      run.wrongLessons[it.L.id] = (run.wrongLessons[it.L.id] || 0) + 1;
+      if (run.mode !== "test" && !run.retried.has(it.key)) { run.retried.add(it.key); run.queue.push(it); }
+    }
+    save();
+    const praise = ["せいかい！", "いいね！", "その調子！", "ばっちり！"][Math.floor(Math.random() * 4)];
+    const fullS = it.kind === "s" ? `<p class="fb-full" lang="en">${esc(sentenceBlank(it.L.sentences[it.si], it.qi).text)}</p>` : "";
+    $("#fb").innerHTML = `<div class="feedback ${ok ? "ok" : "ng"}" aria-live="polite"><p class="fb-title">${ok ? "⭕ " + praise : `❌ 正解は「<span${q.choiceEn ? ' lang="en"' : ""}>${esc(q.correct)}</span>」`}</p>
+      ${q.ex ? `<p class="fb-body">${q.ex}</p>` : ""}${fullS}${q.full ? q.full : ""}${q.ja && it.kind === "c" ? `<p class="fb-ja">${esc(q.ja)}</p>` : ""}
+      ${!ok && run.mode !== "test" && !cur.retry ? '<p class="small muted" style="margin:6px 0 0">この問題は、あとでもう一度出ます。</p>' : ""}</div>
+      <div class="next-row"><button type="button" class="btn" id="nextBtn" data-next>${run.queue.length ? "次へ" : "結果を見る"} ▶</button></div>`;
+    const nb = $("#nextBtn"); if (nb) nb.focus({ preventScroll: true });
+    $("#fb").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  /* ----- passage (2〜3文 / 本文) ----- */
+  function startPassage() {
+    const it = run.passages[run.pIndex];
+    const L = it.L;
+    const segs = it.sis.map(si => {
+      const s = L.sentences[si];
+      let qi = null;
+      if (s.q.length) qi = run.step === "g" ? (s.q[1] ? 1 : 0) : Math.floor(Math.random() * s.q.length);
+      return { si, s, qi };
+    });
+    const blanks = segs.filter(x => x.qi !== null).map((x, n) => ({ ...x, n: n + 1, b: sentenceBlank(x.s, x.qi), choices: shuffle(x.s.q[x.qi].slice(0, 4)), state: "" }));
+    run.pas = { it, segs, blanks, cur: 0, firstOkAll: true, okCount: 0, showJa: false, done: false };
+    drawPassage(true);
+  }
+  function passageHTML() {
+    const P = run.pas, L = P.it.L;
+    const bmap = new Map(P.blanks.map(b => [b.si, b]));
+    let lines = [], pi = 0;
+    // paragraph grouping for long texts
+    const paraBreaks = new Set();
+    if (L.paras) { let acc = 0; const body = bodySentences(L).map(x => x.si); L.paras.forEach((n, i) => { paraBreaks.add(body[acc]); acc += n; }); }
+    let curLine = null;
+    P.segs.forEach(seg => {
+      const b = bmap.get(seg.si);
+      let html;
+      if (b) {
+        const st = b.state || (P.cur === b.n - 1 && !P.done ? "cur" : "");
+        const inner = b.state ? esc(b.b.q[0]) : `（${b.n}）`;
+        html = `${esc(b.b.before)}<span class="blank ${st}" data-bn="${b.n}">${inner}</span>${esc(b.b.after)}`;
+      } else html = esc(plain(seg.s.en));
+      const newLine = !curLine || (seg.s.sp ? seg.s.sp !== curLine.sp : (L.paras ? paraBreaks.has(seg.si) : true));
+      if (newLine) { curLine = { sp: seg.s.sp, para: paraBreaks.has(seg.si) ? (L.paraStart + pi++) : null, parts: [], ja: [] }; lines.push(curLine); }
+      curLine.parts.push(html); curLine.ja.push(seg.s.ja);
+    });
+    return lines.map(l => `${l.para != null && run.step === "w" ? `<p class="para-label" style="margin:10px 0 2px">段落 ${l.para}</p>` : ""}<p class="pline">${l.sp ? `<span class="line-sp">${esc(l.sp)}:</span>` : ""}<span lang="en">${l.parts.join(" ")}</span>${P.showJa ? `<span class="pja">${esc(l.ja.join(""))}</span>` : ""}</p>`).join("");
+  }
+  function drawPassage(first) {
+    const P = run.pas;
+    const label = run.step === "g" ? `文章 ${run.pIndex + 1} / ${run.passages.length}` : "本文まるごと";
+    setTop({ back: run.back, title: esc(run.title), sub: esc(run.sub || ""), right: `<b>${Math.min(P.cur + 1, P.blanks.length)}</b> / ${P.blanks.length}` });
+    const b = P.blanks[P.cur];
+    const dock = P.done ? `<div class="dock"><div class="feedback ${P.firstOkAll ? "ok" : "ng"}"><p class="fb-title">${P.okCount} / ${P.blanks.length} 問 正解${P.firstOkAll ? "　🎉 パーフェクト！" : ""}</p><p class="fb-body small">日本語訳を表示して、もう一度読んでみよう。</p></div>
+        <div class="next-row"><button type="button" class="btn" data-pnext>${run.pIndex + 1 < run.passages.length ? "次の文章へ ▶" : "結果を見る ▶"}</button></div></div>`
+      : `<div class="dock"><p class="dock-q">（${b.n}）に入るのは？</p><div class="choices${b.choices.some(c => c.length > 14) ? " long" : ""}" id="choices">${b.choices.map((c, i) => `<button type="button" class="choice" data-pchoice="${i}"><span class="k">${i + 1}</span><span class="t" lang="en">${esc(c)}</span></button>`).join("")}</div><div id="pfb"></div></div>`;
+    app.innerHTML = `<div class="wrap play"><div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><p class="qkind" style="margin:0">${label}</p>
+      <button type="button" class="toggle" data-pja aria-pressed="${P.showJa}">日本語訳${P.showJa ? "をかくす" : "を見る"}</button></div>
+      <div class="passage" id="passage" style="margin-top:8px">${passageHTML()}</div></div>${dock}</div>`;
+    if (first) window.scrollTo(0, 0);
+    const curEl = $(".blank.cur");
+    if (curEl && !first) curEl.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+  function answerPassage(i) {
+    const P = run.pas; const b = P.blanks[P.cur];
+    if (!b || b.state) return;
+    const choice = b.choices[i]; const ok = choice === b.b.q[0];
+    b.state = ok ? "ok" : "ng";
+    run.blanksTotal++;
+    if (ok) { P.okCount++; run.blanksOk++; } else { P.firstOkAll = false; addMistake(`s:${P.it.L.id}:${b.si}:${b.qi}`); run.wrongLessons[P.it.L.id] = (run.wrongLessons[P.it.L.id] || 0) + 1; }
+    save();
+    $$("#choices .choice").forEach((el, bi) => { el.disabled = true; if (b.choices[bi] === b.b.q[0]) el.classList.add("is-ok"); else if (bi === i) el.classList.add("is-ng"); else el.classList.add("dim"); });
+    const blankEl = $(`.blank[data-bn="${b.n}"]`);
+    if (blankEl) { blankEl.textContent = b.b.q[0]; blankEl.className = "blank " + b.state; }
+    const ex = b.b.q[4] || b.s.nt;
+    $("#pfb").innerHTML = `<div class="feedback ${ok ? "ok" : "ng"}"><p class="fb-title">${ok ? "⭕ せいかい！" : `❌ 正解は「<span lang="en">${esc(b.b.q[0])}</span>」`}</p>${ex ? `<p class="fb-body small">${rich(ex)}</p>` : ""}${!ok ? `<p class="fb-ja">${esc(b.s.ja)}</p>` : ""}</div>
+      <div class="next-row"><button type="button" class="btn" data-pgo>次へ ▶</button></div>`;
+    const nb = $("[data-pgo]"); if (nb) nb.focus({ preventScroll: true });
+  }
+  function passageAdvance() {
+    const P = run.pas;
+    P.cur++;
+    if (P.cur >= P.blanks.length) {
+      P.done = true;
+      const it = P.it;
+      const pct = P.okCount / P.blanks.length;
+      if (run.step === "g" ? P.firstOkAll : pct >= 0.8) state.cleared[it.key] = true;
+      run.answered++; if (P.firstOkAll) run.firstOk++;
+      save();
+    }
+    drawPassage(false);
+  }
+
+  /* ----- result ----- */
+  function showResult() {
+    const isPassage = run.step === "g" || run.step === "w";
+    const total = isPassage ? run.blanksTotal : run.total;
+    const ok = isPassage ? run.blanksOk : run.firstOk;
+    const pct = total ? Math.round(ok / total * 100) : 0;
+    if (run.mode === "lesson") {
+      const k = run.L.id + "|" + run.step;
+      state.best[k] = Math.max(state.best[k] || 0, pct);
+    }
+    if (run.mode === "test") state.testBest = Math.max(state.testBest || 0, pct);
+    save();
+    const stars = pct >= 90 ? "★★★" : pct >= 70 ? "★★☆" : pct >= 40 ? "★☆☆" : "☆☆☆";
+    const msg = pct === 100 ? "パーフェクト！すばらしい！" : pct >= 80 ? "よくできました！あと少しで全部クリア！" : pct >= 50 ? "いい調子！まちがえたところを解説で確認しよう。" : "大丈夫、くり返せば必ず覚えられる！解説を見てからもう一度。";
+    let actions = "", extra = "";
+    if (run.mode === "lesson") {
+      const steps = stepsFor(run.L); const idx = steps.findIndex(s => s.id === run.step); const nxt = steps[idx + 1];
+      const p = stepProgress(run.L, run.step);
+      extra = `<p class="small muted">このステップのクリア：${p.done} / ${p.total}</p>`;
+      actions = `<button type="button" class="btn" data-again>🔁 もう一度</button>${nxt ? `<a class="btn sub" href="#/play/${run.L.id}/${nxt.id}">次：${esc(nxt.name)} ▶</a>` : `<a class="btn sub" href="#/test">🏁 総まとめテストへ</a>`}<a class="btn sub" href="#/l/${run.L.id}">📖 解説を見る</a>`;
+    } else if (run.mode === "test") {
+      const weak = Object.entries(run.wrongLessons).sort((a, b) => b[1] - a[1]);
+      extra = weak.length ? `<div class="card weak"><b>復習するとよい単元</b><ul>${weak.map(([id, n]) => { const L = LMAP.get(id); return `<li><a href="#/l/${id}">${esc(L.title)}（${esc(L.unit)} ${esc(L.part)}）</a>　${n}問まちがい</li>`; }).join("")}</ul></div>` : "";
+      actions = `<button type="button" class="btn" data-again>🔁 もう一度テスト</button><a class="btn sub" href="#/">🏠 ホーム</a>`;
+    } else {
+      extra = `<p class="small muted">のこりの「まちがえた問題」：${state.mistakes.length} 問</p>`;
+      actions = `${state.mistakes.length ? '<button type="button" class="btn" data-again>🔁 続けて復習</button>' : ""}<a class="btn sub" href="#/">🏠 ホーム</a>`;
+    }
+    setTop({ back: run.back, title: esc(run.title), sub: "結果" });
+    app.innerHTML = `<div class="wrap"><div class="card result"><p class="muted" style="margin:0">${run.mode === "test" ? "得点" : isPassage ? "正解した空らん" : "一発で正解"}</p>
+      <p class="big">${run.mode === "test" ? `${pct}<span style="font-size:1.2rem">点</span>` : `${ok}<span style="font-size:1.2rem"> / ${total}</span>`}</p>
+      <p class="stars" aria-label="評価">${stars}</p><p class="msg">${msg}</p>${extra}<div class="row" style="margin-top:12px">${actions}</div></div></div>`;
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------------- install / LINE ---------------- */
+  const isLine = /Line\//i.test(navigator.userAgent);
+  function externalUrl() { const u = new URL(location.href); u.searchParams.set("openExternalBrowser", "1"); return u.toString(); }
+  function lineBanner() {
+    if (!isLine) return "";
+    return `<div class="banner">LINE の中で開いています。学習の記録を残すために、Safari / Chrome で開きなおしてください。<br><a class="btn" href="${esc(externalUrl())}">Safari / Chrome で開きなおす</a></div>`;
+  }
+  let deferredPrompt = null;
+  window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferredPrompt = e; const b = $("#installNow"); if (b) b.hidden = false; });
+  function openInstall() {
+    const ua = navigator.userAgent;
+    const ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    const m = ua.match(/OS (\d+)_/); const iosVer = m ? +m[1] : 0;
+    const iosNew = `<h3>iPhone（iOS 26 以降の Safari）</h3><ol><li>画面右下の「…」→「共有」をタップ</li><li>「ホーム画面に追加」をタップ（見つからなければ下にスクロール）</li><li>「Web アプリとして開く」がオンのまま、右上の「追加」</li></ol>`;
+    const iosOld = `<h3>iPhone（iOS 18 以前の Safari）</h3><ol><li>画面下の共有ボタン（四角から↑が出たマーク）をタップ</li><li>下にスクロールして「ホーム画面に追加」</li><li>右上の「追加」</li></ol>`;
+    const android = `<h3>Android（Chrome）</h3><button type="button" class="btn" id="installNow" ${deferredPrompt ? "" : "hidden"}>📲 ホーム画面に追加する</button><ol><li>右上の「⋮」をタップ</li><li>「ホーム画面に追加」または「アプリをインストール」</li><li>「インストール」</li></ol>`;
+    const body = ios ? (iosVer >= 26 ? iosNew + iosOld : iosOld + iosNew) : android + iosNew + iosOld;
+    $("#sheetBody").innerHTML = `${body}<p class="small muted">追加したら、次からはホーム画面のアイコンから開いてください（iPhone は Safari とアイコンで学習記録が別々になります）。</p>`;
+    $("#sheet").hidden = false;
+  }
+
+  /* ---------------- router ---------------- */
+  function route() {
+    if (typeof speechSynthesis !== "undefined" && canSpeak) speechSynthesis.cancel();
+    const h = location.hash.replace(/^#\/?/, "").split("/");
+    if (h[0] === "l" && LMAP.get(h[1])) { run = null; renderLesson(LMAP.get(h[1]), h[2] === "p" ? "practice" : "read"); window.scrollTo(0, 0); return; }
+    if (h[0] === "play" && LMAP.get(h[1])) return startRun("lesson", LMAP.get(h[1]), h[2]);
+    if (h[0] === "test") return startRun("test");
+    if (h[0] === "review") { if (!state.mistakes.length) { location.hash = "#/"; return; } return startRun("review"); }
+    run = null; renderHome(); window.scrollTo(0, 0);
+  }
+
+  /* ---------------- events ---------------- */
+  document.addEventListener("click", e => {
+    const t = e.target.closest("[data-go],[data-test],[data-speak],[data-choice],[data-next],[data-pchoice],[data-pgo],[data-pnext],[data-pja],[data-toggle],[data-again],.jaw,#installNow,[aria-disabled]");
+    if (!t) return;
+    if (t.hasAttribute("aria-disabled")) { e.preventDefault(); return; }
+    if (t.dataset.go) { location.hash = t.dataset.go; return; }
+    if (t.dataset.test) { try { localStorage.setItem(CURRENT_KEY, t.dataset.test); } catch (e) { /* ignore */ } location.hash = "#/"; location.reload(); return; }
+    if (t.dataset.speak) { speak(t.dataset.speak); return; }
+    if (t.dataset.choice != null) return answerQ(+t.dataset.choice);
+    if (t.hasAttribute("data-next")) return nextQ();
+    if (t.dataset.pchoice != null) return answerPassage(+t.dataset.pchoice);
+    if (t.hasAttribute("data-pgo")) return passageAdvance();
+    if (t.hasAttribute("data-pnext")) { run.pIndex++; if (run.pIndex < run.passages.length) startPassage(); else showResult(); return; }
+    if (t.hasAttribute("data-pja")) { run.pas.showJa = !run.pas.showJa; const y = window.scrollY; drawPassage(false); window.scrollTo(0, y); if (run.pas.cur < run.pas.blanks.length && !run.pas.done) { /* keep answered state */ } return; }
+    if (t.dataset.toggle) {
+      const body = $("#tabBody");
+      if (t.dataset.toggle === "ja") { state.hideJa = !state.hideJa; body.classList.toggle("hide-ja", state.hideJa); t.setAttribute("aria-pressed", state.hideJa); $$(".jaw.show").forEach(x => x.classList.remove("show")); }
+      else { state.hideChunks = !state.hideChunks; body.classList.toggle("hide-chunks", state.hideChunks); t.setAttribute("aria-pressed", !state.hideChunks); }
+      save(); return;
+    }
+    if (t.hasAttribute("data-again")) { const r = run; if (r.mode === "lesson") startRun("lesson", r.L, r.step); else startRun(r.mode); return; }
+    if (t.classList.contains("jaw")) { t.classList.toggle("show"); return; }
+    if (t.id === "installNow" && deferredPrompt) { deferredPrompt.prompt(); deferredPrompt = null; t.hidden = true; }
+  });
+  document.addEventListener("keydown", e => {
+    if (!$("#sheet").hidden) { if (e.key === "Escape") $("#sheet").hidden = true; return; }
+    if (!run || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (/^[1-4]$/.test(e.key)) {
+      const sel = run.pas && !run.pas.done && $("[data-pchoice]") ? `[data-pchoice="${+e.key - 1}"]` : `[data-choice="${+e.key - 1}"]`;
+      const b = $(sel); if (b && !b.disabled) { e.preventDefault(); b.click(); }
+    } else if (e.key === "Enter") {
+      const b = $("[data-next]") || $("[data-pgo]") || $("[data-pnext]");
+      if (b && document.activeElement !== b) { e.preventDefault(); b.click(); }
+    }
+  });
+  $("#installBtn").addEventListener("click", openInstall);
+  $("#sheetClose").addEventListener("click", () => { $("#sheet").hidden = true; });
+  $("#sheet").addEventListener("click", e => { if (e.target.id === "sheet") $("#sheet").hidden = true; });
+  $("#resetBtn").addEventListener("click", () => {
+    if (confirm("このテスト対策の学習記録をすべて消します。よろしいですか？")) { state = { cleared: {}, best: {}, mistakes: [], hideJa: false, hideChunks: false, testBest: null }; save(); location.hash = "#/"; route(); }
+  });
+  $("#ver").textContent = "ver " + APP_VERSION;
+  window.addEventListener("hashchange", route);
+
+  if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
+    window.addEventListener("load", () => { navigator.serviceWorker.register("sw.js").catch(() => {}); });
+  }
+  if (canSpeak && speechSynthesis.getVoices().length === 0) speechSynthesis.addEventListener && speechSynthesis.addEventListener("voiceschanged", () => {});
+
+  load();
+  route();
+})();
+
+</script>
+</body>
+</html>

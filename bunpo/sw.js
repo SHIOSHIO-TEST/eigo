@@ -5,9 +5,9 @@
  *  ・電波がないときも、前回開いたドリルがそのまま使える
  *  ※ ファイル構成を変えたときだけ CACHE の名前（v1 → v2）を変えてください
  * ================================================================ */
-const CACHE = 'bunpo-drill-v1';                         // ドリルごとに別の名前（同じサイト内で混ざらないように）
+const CACHE = 'bunpo-drill-v2';                         // ドリルごとに別の名前（同じサイト内で混ざらないように）
 const PREFIX = CACHE.replace(/v\d+$/, '');
-const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
+const FILES = ['./', 'index.html', 'taisaku.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 const NETWORK_TIMEOUT_MS = 5000;   // これより遅いときは保存済みのものを先に表示
 
 self.addEventListener('install', (event) => {
